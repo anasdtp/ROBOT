@@ -16,7 +16,7 @@
  </clocktable>
  <library
    expandedCategories="Library/Memories and Memory Controllers/External Memory Interfaces/DDR3 Interfaces,Project,Library/Memories and Memory Controllers/External Memory Interfaces/DDR2 Interfaces,Library,Library/Memories and Memory Controllers/External Memory Interfaces/LPDDR2 Interfaces,Library/Memories and Memory Controllers/External Memory Interfaces,Library/Memories and Memory Controllers,Library/Memories and Memory Controllers/External Memory Interfaces/Memory Models,Library/Memories and Memory Controllers/External Memory Interfaces/DDR Interfaces,Library/Memories and Memory Controllers/External Memory Interfaces/SDRAM Interfaces" />
- <window width="1920" height="1152" x="0" y="0" />
+ <window width="1936" height="1168" x="-8" y="-8" />
  <generation path="_PROJECT_NAME_" />
  <hdlexample language="VERILOG" />
 </preferences>
