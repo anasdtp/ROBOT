@@ -1,8 +1,10 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="ROBOT">
+		<CBX_INST_ENTRY INSTANCE_NAME="|ROBOT|nios_system_sdram:NiosII|nios_system_sdram_clocks:clocks|altpll:DE_Clock_Generator_Audio" CBX_FILE_NAME="altpll_vpb2.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|ROBOT|nios_system_sdram:NiosII|nios_system_sdram_jtag_uart_0:jtag_uart_0|nios_system_sdram_jtag_uart_0_scfifo_r:the_nios_system_sdram_jtag_uart_0_scfifo_r|scfifo:rfifo" CBX_FILE_NAME="scfifo_jr21.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|ROBOT|nios_system_sdram:NiosII|nios_system_sdram_onchip_memory2_0:onchip_memory2_0|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_j4e1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|ROBOT|nios_system_sdram:NiosII|nios_system_sdram_clocks:clocks|altpll:DE_Clock_Generator_System" CBX_FILE_NAME="altpll_6rb2.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|ROBOT|nios_system_sdram:NiosII|nios_system_sdram_jtag_uart_0:jtag_uart_0|nios_system_sdram_jtag_uart_0_scfifo_w:the_nios_system_sdram_jtag_uart_0_scfifo_w|scfifo:wfifo" CBX_FILE_NAME="scfifo_jr21.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|ROBOT|nios_system_sdram:NiosII|nios_system_sdram_nios2_qsys_0:nios2_qsys_0|nios_system_sdram_nios2_qsys_0_nios2_oci:the_nios_system_sdram_nios2_qsys_0_nios2_oci|nios_system_sdram_nios2_qsys_0_nios2_ocimem:the_nios_system_sdram_nios2_qsys_0_nios2_ocimem|nios_system_sdram_nios2_qsys_0_ociram_sp_ram_module:nios_system_sdram_nios2_qsys_0_ociram_sp_ram|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_pf91.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|ROBOT|nios_system_sdram:NiosII|nios_system_sdram_nios2_qsys_0:nios2_qsys_0|nios_system_sdram_nios2_qsys_0_register_bank_a_module:nios_system_sdram_nios2_qsys_0_register_bank_a|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_l2i1.tdf"/>

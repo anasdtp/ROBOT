@@ -1,6 +1,6 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="fee7e844f67c48fcd12a"/>
+    <hash md5_digest_80b="277d8da83169fe9cc050"/>
   </project>
   <file_info>
     <file device="EP4CE22F17C6" path="ROBOT.sof" usercode="0xFFFFFFFF"/>
@@ -141,12 +141,4 @@
       </outputs>
     </node>
   </node_info>
-  <sld_infos>
-    <sld_info hpath="nios_system_sdram:NiosII" name="NiosII">
-      <assignment_values>
-        <assignment_value text="QSYS_NAME nios_system_sdram HAS_SOPCINFO 1 GENERATION_ID 1770729785"/>
-      </assignment_values>
-      <parameters/>
-    </sld_info>
-  </sld_infos>
 </sld_project_info>

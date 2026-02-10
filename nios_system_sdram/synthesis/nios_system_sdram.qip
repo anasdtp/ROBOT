@@ -2,7 +2,7 @@ set_global_assignment -entity "nios_system_sdram" -library "nios_system_sdram" -
 set_global_assignment -entity "nios_system_sdram" -library "nios_system_sdram" -name IP_TOOL_VERSION "13.0sp1"
 set_global_assignment -entity "nios_system_sdram" -library "nios_system_sdram" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "nios_system_sdram" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../nios_system_sdram.sopcinfo"]
-set_instance_assignment -entity "nios_system_sdram" -library "nios_system_sdram" -name SLD_INFO "QSYS_NAME nios_system_sdram HAS_SOPCINFO 1 GENERATION_ID 1770729785"
+set_instance_assignment -entity "nios_system_sdram" -library "nios_system_sdram" -name SLD_INFO "QSYS_NAME nios_system_sdram HAS_SOPCINFO 1 GENERATION_ID 1770738248"
 set_global_assignment -library "nios_system_sdram" -name MISC_FILE [file join $::quartus(qip_path) "../../nios_system_sdram.cmp"]
 set_global_assignment -name SYNTHESIS_ONLY_QIP ON
 set_global_assignment -library "nios_system_sdram" -name MISC_FILE [file join $::quartus(qip_path) "../../nios_system_sdram.qsys"]
@@ -34,6 +34,8 @@ set_global_assignment -library "nios_system_sdram" -name SYSTEMVERILOG_FILE [fil
 set_global_assignment -library "nios_system_sdram" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_merlin_master_agent.sv"]
 set_global_assignment -library "nios_system_sdram" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_merlin_slave_translator.sv"]
 set_global_assignment -library "nios_system_sdram" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_merlin_master_translator.sv"]
+set_global_assignment -library "nios_system_sdram" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_sdram_clocks.v"]
+set_global_assignment -library "nios_system_sdram" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_sdram_motor_right.v"]
 set_global_assignment -library "nios_system_sdram" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_sdram_sdram.v"]
 set_global_assignment -library "nios_system_sdram" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_sdram_jtag_uart_0.v"]
 set_global_assignment -library "nios_system_sdram" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_sdram_LEDs.v"]
@@ -114,6 +116,9 @@ set_global_assignment -entity "altera_merlin_slave_translator" -library "nios_sy
 set_global_assignment -entity "altera_merlin_master_translator" -library "nios_system_sdram" -name IP_TOOL_NAME "altera_merlin_master_translator"
 set_global_assignment -entity "altera_merlin_master_translator" -library "nios_system_sdram" -name IP_TOOL_VERSION "13.0"
 set_global_assignment -entity "altera_merlin_master_translator" -library "nios_system_sdram" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "nios_system_sdram_motor_right" -library "nios_system_sdram" -name IP_TOOL_NAME "altera_avalon_pio"
+set_global_assignment -entity "nios_system_sdram_motor_right" -library "nios_system_sdram" -name IP_TOOL_VERSION "13.0.1.99.2"
+set_global_assignment -entity "nios_system_sdram_motor_right" -library "nios_system_sdram" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -entity "nios_system_sdram_sdram" -library "nios_system_sdram" -name IP_TOOL_NAME "altera_avalon_new_sdram_controller"
 set_global_assignment -entity "nios_system_sdram_sdram" -library "nios_system_sdram" -name IP_TOOL_VERSION "13.0.1.99.2"
 set_global_assignment -entity "nios_system_sdram_sdram" -library "nios_system_sdram" -name IP_TOOL_ENV "Qsys"

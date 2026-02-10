@@ -3,20 +3,20 @@
  <debug showDebugMenu="0" />
  <systemtable>
   <columns>
-   <connections preferredWidth="127" />
+   <connections preferredWidth="175" />
    <irq preferredWidth="34" />
+   <inputclock preferredWidth="170" />
   </columns>
  </systemtable>
  <clocktable>
   <columns>
-   <clockname preferredWidth="548" />
-   <clocksource preferredWidth="547" />
-   <frequency preferredWidth="529" />
+   <clockname preferredWidth="530" />
+   <clocksource preferredWidth="529" />
+   <frequency preferredWidth="512" />
   </columns>
  </clocktable>
- <library
-   expandedCategories="Library/Memories and Memory Controllers/External Memory Interfaces/DDR3 Interfaces,Project,Library/Memories and Memory Controllers/External Memory Interfaces/DDR2 Interfaces,Library,Library/Memories and Memory Controllers/External Memory Interfaces/LPDDR2 Interfaces,Library/Memories and Memory Controllers/External Memory Interfaces,Library/Memories and Memory Controllers,Library/Memories and Memory Controllers/External Memory Interfaces/Memory Models,Library/Memories and Memory Controllers/External Memory Interfaces/DDR Interfaces,Library/Memories and Memory Controllers/External Memory Interfaces/SDRAM Interfaces" />
+ <library expandedCategories="Library/University Program,Project,Library" />
  <window width="1936" height="1168" x="-8" y="-8" />
  <generation path="_PROJECT_NAME_" />
- <hdlexample language="VERILOG" />
+ <hdlexample language="VHDL" />
 </preferences>
