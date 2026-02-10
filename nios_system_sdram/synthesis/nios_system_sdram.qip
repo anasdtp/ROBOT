@@ -2,7 +2,7 @@ set_global_assignment -entity "nios_system_sdram" -library "nios_system_sdram" -
 set_global_assignment -entity "nios_system_sdram" -library "nios_system_sdram" -name IP_TOOL_VERSION "13.0sp1"
 set_global_assignment -entity "nios_system_sdram" -library "nios_system_sdram" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "nios_system_sdram" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../nios_system_sdram.sopcinfo"]
-set_instance_assignment -entity "nios_system_sdram" -library "nios_system_sdram" -name SLD_INFO "QSYS_NAME nios_system_sdram HAS_SOPCINFO 1 GENERATION_ID 1770727498"
+set_instance_assignment -entity "nios_system_sdram" -library "nios_system_sdram" -name SLD_INFO "QSYS_NAME nios_system_sdram HAS_SOPCINFO 1 GENERATION_ID 1770729785"
 set_global_assignment -library "nios_system_sdram" -name MISC_FILE [file join $::quartus(qip_path) "../../nios_system_sdram.cmp"]
 set_global_assignment -name SYNTHESIS_ONLY_QIP ON
 set_global_assignment -library "nios_system_sdram" -name MISC_FILE [file join $::quartus(qip_path) "../../nios_system_sdram.qsys"]

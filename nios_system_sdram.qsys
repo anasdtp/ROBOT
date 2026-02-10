@@ -68,14 +68,6 @@
          type = "int";
       }
    }
-   element sdram.s1
-   {
-      datum baseAddress
-      {
-         value = "67108864";
-         type = "String";
-      }
-   }
    element LEDs.s1
    {
       datum baseAddress
@@ -89,6 +81,14 @@
       datum baseAddress
       {
          value = "0";
+         type = "String";
+      }
+   }
+   element sdram.s1
+   {
+      datum baseAddress
+      {
+         value = "67108864";
          type = "String";
       }
    }
@@ -131,7 +131,7 @@
  <parameter name="projectName" value="ROBOT.qpf" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="1" />
- <parameter name="timeStamp" value="1770727153121" />
+ <parameter name="timeStamp" value="1770728416234" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
@@ -146,6 +146,7 @@
    type="conduit"
    dir="end" />
  <interface name="sdram_wire" internal="sdram.wire" type="conduit" dir="end" />
+ <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
  <module kind="clock_source" version="13.0" enabled="1" name="clk_0">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
@@ -532,11 +533,6 @@
    version="13.0"
    start="nios2_qsys_0.jtag_debug_module_reset"
    end="sdram.reset" />
- <connection
-   kind="reset"
-   version="13.0"
-   start="nios2_qsys_0.jtag_debug_module_reset"
-   end="clk_0.clk_in_reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
 </system>
