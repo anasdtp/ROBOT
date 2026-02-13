@@ -1,5 +1,5 @@
 Flow report for ROBOT
-Tue Feb 10 16:58:36 2026
+Fri Feb 13 11:44:22 2026
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
 
 
@@ -40,18 +40,18 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------------+
 ; Flow Summary                                                                          ;
 +------------------------------------+--------------------------------------------------+
-; Flow Status                        ; Successful - Tue Feb 10 16:58:20 2026            ;
+; Flow Status                        ; Successful - Fri Feb 13 11:44:09 2026            ;
 ; Quartus II 32-bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version ;
 ; Revision Name                      ; ROBOT                                            ;
 ; Top-level Entity Name              ; ROBOT                                            ;
 ; Family                             ; Cyclone IV E                                     ;
 ; Device                             ; EP4CE22F17C6                                     ;
 ; Timing Models                      ; Final                                            ;
-; Total logic elements               ; 2,536 / 22,320 ( 11 % )                          ;
-;     Total combinational functions  ; 2,330 / 22,320 ( 10 % )                          ;
-;     Dedicated logic registers      ; 1,545 / 22,320 ( 7 % )                           ;
-; Total registers                    ; 1614                                             ;
-; Total pins                         ; 63 / 154 ( 41 % )                                ;
+; Total logic elements               ; 3,036 / 22,320 ( 14 % )                          ;
+;     Total combinational functions  ; 2,656 / 22,320 ( 12 % )                          ;
+;     Dedicated logic registers      ; 1,920 / 22,320 ( 9 % )                           ;
+; Total registers                    ; 1989                                             ;
+; Total pins                         ; 67 / 154 ( 44 % )                                ;
 ; Total virtual pins                 ; 0                                                ;
 ; Total memory bits                  ; 44,032 / 608,256 ( 7 % )                         ;
 ; Embedded Multiplier 9-bit elements ; 0 / 132 ( 0 % )                                  ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/10/2026 16:56:38 ;
+; Start date & time ; 02/13/2026 11:42:59 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; ROBOT               ;
 +-------------------+---------------------+
@@ -72,22 +72,20 @@ applicable agreement for further details.
 
 +------------------------------------------------------------------------------------------------------------------------+
 ; Flow Non-Default Global Settings                                                                                       ;
-+-------------------------------------+---------------------------------------+---------------+-------------+------------+
-; Assignment Name                     ; Value                                 ; Default Value ; Entity Name ; Section Id ;
-+-------------------------------------+---------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 154946507545760.177073899818596       ; --            ; --          ; --         ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                    ; --            ; --          ; --         ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                     ; --            ; --          ; --         ;
-; PARTITION_COLOR                     ; 16764057                              ; --            ; DE0_NANO    ; Top        ;
-; PARTITION_COLOR                     ; 16764057                              ; --            ; --          ; Top        ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                 ; --            ; DE0_NANO    ; Top        ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                 ; --            ; --          ; Top        ;
-; PARTITION_NETLIST_TYPE              ; SOURCE                                ; --            ; DE0_NANO    ; Top        ;
-; PARTITION_NETLIST_TYPE              ; SOURCE                                ; --            ; --          ; Top        ;
-; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                   ; --            ; --          ; --         ;
-; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ; --            ; --          ; --         ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                          ; --            ; --          ; --         ;
-+-------------------------------------+---------------------------------------+---------------+-------------+------------+
++-------------------------------------+--------------------------------+---------------+--------------------+------------+
+; Assignment Name                     ; Value                          ; Default Value ; Entity Name        ; Section Id ;
++-------------------------------------+--------------------------------+---------------+--------------------+------------+
+; COMPILER_SIGNATURE_ID               ; 44829937156133.177097937907744 ; --            ; --                 ; --         ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                             ; --            ; --                 ; --         ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                              ; --            ; --                 ; --         ;
+; PARTITION_COLOR                     ; 16764057                       ; --            ; DE0_NANO_SMART_CAR ; Top        ;
+; PARTITION_COLOR                     ; 16764057                       ; --            ; --                 ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING          ; --            ; DE0_NANO_SMART_CAR ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING          ; --            ; --                 ; Top        ;
+; PARTITION_NETLIST_TYPE              ; SOURCE                         ; --            ; DE0_NANO_SMART_CAR ; Top        ;
+; PARTITION_NETLIST_TYPE              ; SOURCE                         ; --            ; --                 ; Top        ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                   ; --            ; --                 ; --         ;
++-------------------------------------+--------------------------------+---------------+--------------------+------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------+
@@ -95,11 +93,11 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:01:06     ; 1.0                     ; 490 MB              ; 00:00:34                           ;
-; Fitter                    ; 00:00:25     ; 1.6                     ; 735 MB              ; 00:00:20                           ;
-; Assembler                 ; 00:00:11     ; 1.0                     ; 395 MB              ; 00:00:02                           ;
-; TimeQuest Timing Analyzer ; 00:00:15     ; 1.5                     ; 477 MB              ; 00:00:05                           ;
-; Total                     ; 00:01:57     ; --                      ; --                  ; 00:01:01                           ;
+; Analysis & Synthesis      ; 00:00:47     ; 1.0                     ; 561 MB              ; 00:00:17                           ;
+; Fitter                    ; 00:00:18     ; 6.6                     ; 909 MB              ; 00:00:14                           ;
+; Assembler                 ; 00:00:09     ; 1.0                     ; 396 MB              ; 00:00:01                           ;
+; TimeQuest Timing Analyzer ; 00:00:12     ; 1.0                     ; 514 MB              ; 00:00:03                           ;
+; Total                     ; 00:01:26     ; --                      ; --                  ; 00:00:35                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -108,10 +106,10 @@ applicable agreement for further details.
 +---------------------------+------------------+-----------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; a-137151         ; Windows 7 ; 6.2        ; x86_64         ;
-; Fitter                    ; a-137151         ; Windows 7 ; 6.2        ; x86_64         ;
-; Assembler                 ; a-137151         ; Windows 7 ; 6.2        ; x86_64         ;
-; TimeQuest Timing Analyzer ; a-137151         ; Windows 7 ; 6.2        ; x86_64         ;
+; Analysis & Synthesis      ; a-013835         ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter                    ; a-013835         ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler                 ; a-013835         ; Windows 7 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; a-013835         ; Windows 7 ; 6.2        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 
