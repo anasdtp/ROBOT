@@ -1,0 +1,29 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=C:/Users/fchiha/Documents/Altera/ROBOT/ --output-directory=C:/Users/fchiha/Documents/Altera/ROBOT/nios_system_sdram/ --report-file=bsf:C:/Users/fchiha/Documents/Altera/ROBOT/nios_system_sdram.bsf --system-info=DEVICE_FAMILY="Cyclone IV E" --system-info=DEVICE=EP4CE22F17C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=C:/Users/fchiha/Documents/Altera/ROBOT/nios_system_sdram.qsys
+Progress: Loading ROBOT/nios_system_sdram.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding nios2_qsys_0 [altera_nios2_qsys 13.0]
+Progress: Parameterizing module nios2_qsys_0
+Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 13.0.1.99.2]
+Progress: Parameterizing module onchip_memory2_0
+Progress: Adding switches [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module switches
+Progress: Adding LEDs [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module LEDs
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 13.0.1.99.2]
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding sdram [altera_avalon_new_sdram_controller 13.0.1.99.2]
+Progress: Parameterizing module sdram
+Progress: Adding motor_right [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module motor_right
+Progress: Adding motor_left [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module motor_left
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: nios_system_sdram.switches: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: ip-generate succeeded.
+Info: Stopping: Create block symbol file (.bsf)

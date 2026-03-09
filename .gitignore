@@ -1,60 +1,63 @@
-# Quartus II/Prime project files
-*.qws
-*.bak
-*.rpt
-*.done
-*.smsg
-*.summary
-*.pin
-*.jdi
-transcript
+# Quartus lock files (temporary, should not be tracked)
+*.flock
 
-# Compilation outputs
-db/
-incremental_db/
-output_files/*.sof
-output_files/*.pof
-output_files/*.jdi
-output_files/*.done
+# # Quartus II/Prime project files
+# *.qws
+# *.bak
+# *.rpt
+# *.done
+# *.smsg
+# *.summary
+# *.pin
+# *.jdi
+# transcript
 
-# Simulation files
-simulation/
-*.vwf
-*.sdo
-*.vo
+# # Compilation outputs
+# db/
+# incremental_db/
+# output_files/*.sof
+# output_files/*.pof
+# output_files/*.jdi
+# output_files/*.done
 
-# Generated binaries
-*.elf
-*.srec
-*.hex
+# # Simulation files
+# simulation/
+# *.vwf
+# *.sdo
+# *.vo
 
-# Nios II generated files (keep only source .qsys and .sopcinfo)
-nios_system/synthesis/
-nios_system_sdram/synthesis/submodules/
-*.qip
-*.v
-*.sv
-*.sdc
-*.mif
+# # Generated binaries
+# *.elf
+# *.srec
+# *.hex
 
-# Temporary files
-# *.ncf
-# *_generation*.rpt
+# # Nios II generated files (keep only source .qsys and .sopcinfo)
+# nios_system/synthesis/
+# nios_system_sdram/synthesis/submodules/
+# *.qip
+# *.v
+# *.sv
+# *.sdc
+# *.mif
 
-# Keep important source files
-!*.qsf
-!*.qpf
-!*.vhd
-!*.vhdl
-!*.qsys
-!*.sopcinfo
-!*.tcl
-!*.sdc
-!*.c
-!*.h
-!app_sofware/
+# # Temporary files
+# # *.ncf
+# # *_generation*.rpt
 
-# Exception: keep main QIP files for synthesis
-!nios_system_sdram.qip
-!nios_system_sdram/synthesis/nios_system_sdram.qip
-!nios_system_sdram/synthesis/nios_system_sdram.v
+# # Keep important source files
+# !*.qsf
+# !*.qpf
+# !*.vhd
+# !*.vhdl
+# !*.qsys
+# !*.sopcinfo
+# !*.tcl
+# !*.sdc
+# !*.c
+# !*.h
+# !app_sofware/
+
+# # Exception: keep main QIP files for synthesis
+# !nios_system_sdram.qip
+# !nios_system_sdram/synthesis/nios_system_sdram.qip
+# !nios_system_sdram/synthesis/nios_system_sdram.v
