@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ROBOT
-Fri Feb 13 11:57:23 2026
+Mon Mar 09 08:51:38 2026
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
 
 
@@ -308,13 +308,13 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                          ;
 +------------------------------------+--------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Feb 13 11:57:23 2026            ;
+; Analysis & Synthesis Status        ; Successful - Mon Mar 09 08:51:38 2026            ;
 ; Quartus II 32-bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version ;
 ; Revision Name                      ; ROBOT                                            ;
 ; Top-level Entity Name              ; ROBOT                                            ;
 ; Family                             ; Cyclone IV E                                     ;
-; Total logic elements               ; 3,291                                            ;
-;     Total combinational functions  ; 2,654                                            ;
+; Total logic elements               ; 3,295                                            ;
+;     Total combinational functions  ; 2,658                                            ;
 ;     Dedicated logic registers      ; 1,963                                            ;
 ; Total registers                    ; 1963                                             ;
 ; Total pins                         ; 69                                               ;
@@ -417,16 +417,16 @@ applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 24          ;
-; Maximum allowed            ; 16          ;
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 5           ;
+; Maximum used               ; 6           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-5         ; < 0.1%      ;
-;     Processors 6-24        ;   0.0%      ;
+;     Processors 2-6         ; < 0.1%      ;
+;     Processors 7-12        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -522,16 +522,16 @@ applicable agreement for further details.
 +---------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                                                       ;
 +---------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 3,291                                                                                                                       ;
+; Estimated Total logic elements              ; 3,295                                                                                                                       ;
 ;                                             ;                                                                                                                             ;
-; Total combinational functions               ; 2654                                                                                                                        ;
+; Total combinational functions               ; 2658                                                                                                                        ;
 ; Logic element usage by number of LUT inputs ;                                                                                                                             ;
-;     -- 4 input functions                    ; 1338                                                                                                                        ;
-;     -- 3 input functions                    ; 872                                                                                                                         ;
-;     -- <=2 input functions                  ; 444                                                                                                                         ;
+;     -- 4 input functions                    ; 1340                                                                                                                        ;
+;     -- 3 input functions                    ; 873                                                                                                                         ;
+;     -- <=2 input functions                  ; 445                                                                                                                         ;
 ;                                             ;                                                                                                                             ;
 ; Logic elements by mode                      ;                                                                                                                             ;
-;     -- normal mode                          ; 2417                                                                                                                        ;
+;     -- normal mode                          ; 2421                                                                                                                        ;
 ;     -- arithmetic mode                      ; 237                                                                                                                         ;
 ;                                             ;                                                                                                                             ;
 ; Total registers                             ; 1963                                                                                                                        ;
@@ -546,7 +546,7 @@ applicable agreement for further details.
 ;                                             ;                                                                                                                             ;
 ; Maximum fan-out node                        ; nios_system_sdram:NiosII|nios_system_sdram_clocks:clocks|altpll:DE_Clock_Generator_System|altpll_6rb2:auto_generated|clk[0] ;
 ; Maximum fan-out                             ; 1710                                                                                                                        ;
-; Total fan-out                               ; 17544                                                                                                                       ;
+; Total fan-out                               ; 17557                                                                                                                       ;
 ; Average fan-out                             ; 3.56                                                                                                                        ;
 +---------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
 
@@ -556,7 +556,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
 ; Compilation Hierarchy Node                                                                                                           ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                                                                                                                                              ; Library Name                           ;
 +--------------------------------------------------------------------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
-; |ROBOT                                                                                                                               ; 2654 (28)         ; 1963 (16)    ; 44032       ; 0            ; 0       ; 0         ; 69   ; 0            ; |ROBOT                                                                                                                                                                                                                                                                                                                                                                                                                                                           ; work                                   ;
+; |ROBOT                                                                                                                               ; 2658 (28)         ; 1963 (16)    ; 44032       ; 0            ; 0       ; 0         ; 69   ; 0            ; |ROBOT                                                                                                                                                                                                                                                                                                                                                                                                                                                           ; work                                   ;
 ;    |PWM_generation:PWM_Motors|                                                                                                       ; 74 (74)           ; 34 (34)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ROBOT|PWM_generation:PWM_Motors                                                                                                                                                                                                                                                                                                                                                                                                                                 ; work                                   ;
 ;    |capteurs_sol:Capteurs|                                                                                                           ; 67 (67)           ; 166 (166)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ROBOT|capteurs_sol:Capteurs                                                                                                                                                                                                                                                                                                                                                                                                                                     ; work                                   ;
 ;    |nios_system_sdram:NiosII|                                                                                                        ; 2329 (0)          ; 1650 (0)     ; 44032       ; 0            ; 0       ; 0         ; 0    ; 0            ; |ROBOT|nios_system_sdram:NiosII                                                                                                                                                                                                                                                                                                                                                                                                                                  ; altera_reserved_qsys_nios_system_sdram ;
@@ -698,9 +698,9 @@ applicable agreement for further details.
 ;       |nios_system_sdram_switches:sensor_data6|                                                                                      ; 8 (8)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ROBOT|nios_system_sdram:NiosII|nios_system_sdram_switches:sensor_data6                                                                                                                                                                                                                                                                                                                                                                                          ; altera_reserved_qsys_nios_system_sdram ;
 ;       |nios_system_sdram_switches:sensor_status|                                                                                     ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ROBOT|nios_system_sdram:NiosII|nios_system_sdram_switches:sensor_status                                                                                                                                                                                                                                                                                                                                                                                         ; altera_reserved_qsys_nios_system_sdram ;
 ;       |nios_system_sdram_switches:switches|                                                                                          ; 8 (8)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ROBOT|nios_system_sdram:NiosII|nios_system_sdram_switches:switches                                                                                                                                                                                                                                                                                                                                                                                              ; altera_reserved_qsys_nios_system_sdram ;
-;    |sld_hub:auto_hub|                                                                                                                ; 156 (1)           ; 97 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ROBOT|sld_hub:auto_hub                                                                                                                                                                                                                                                                                                                                                                                                                                          ; work                                   ;
-;       |sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|                                                                                 ; 155 (117)         ; 97 (69)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ROBOT|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst                                                                                                                                                                                                                                                                                                                                                                                             ; work                                   ;
-;          |sld_rom_sr:hub_info_reg|                                                                                                   ; 21 (21)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ROBOT|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg                                                                                                                                                                                                                                                                                                                                                                     ; work                                   ;
+;    |sld_hub:auto_hub|                                                                                                                ; 160 (1)           ; 97 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ROBOT|sld_hub:auto_hub                                                                                                                                                                                                                                                                                                                                                                                                                                          ; work                                   ;
+;       |sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|                                                                                 ; 159 (118)         ; 97 (69)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ROBOT|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst                                                                                                                                                                                                                                                                                                                                                                                             ; work                                   ;
+;          |sld_rom_sr:hub_info_reg|                                                                                                   ; 24 (24)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ROBOT|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg                                                                                                                                                                                                                                                                                                                                                                     ; work                                   ;
 ;          |sld_shadow_jsm:shadow_jsm|                                                                                                 ; 17 (17)           ; 19 (19)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ROBOT|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_shadow_jsm:shadow_jsm                                                                                                                                                                                                                                                                                                                                                                   ; work                                   ;
 +--------------------------------------------------------------------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -2673,7 +2673,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; 6:1                ; 5 bits    ; 20 LEs        ; 5 LEs                ; 15 LEs                 ; Yes        ; |ROBOT|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|shadow_irf_reg[2][1]                                                                                                                                                                                                                                                                                                                    ;
 ; 6:1                ; 5 bits    ; 20 LEs        ; 5 LEs                ; 15 LEs                 ; Yes        ; |ROBOT|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|shadow_irf_reg[1][3]                                                                                                                                                                                                                                                                                                                    ;
 ; 8:1                ; 5 bits    ; 25 LEs        ; 10 LEs               ; 15 LEs                 ; Yes        ; |ROBOT|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|irsr_reg[3]                                                                                                                                                                                                                                                                                                                             ;
-; 34:1               ; 4 bits    ; 88 LEs        ; 60 LEs               ; 28 LEs                 ; Yes        ; |ROBOT|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|design_hash_reg[1]                                                                                                                                                                                                                                                                                                                      ;
+; 34:1               ; 4 bits    ; 88 LEs        ; 64 LEs               ; 24 LEs                 ; Yes        ; |ROBOT|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|design_hash_reg[1]                                                                                                                                                                                                                                                                                                                      ;
 ; 28:1               ; 4 bits    ; 72 LEs        ; 48 LEs               ; 24 LEs                 ; Yes        ; |ROBOT|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg|WORD_SR[0]                                                                                                                                                                                                                                                                                                      ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -8714,7 +8714,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------------+--------------+
 ; Partition Name   ; Elapsed Time ;
 +------------------+--------------+
-; Top              ; 00:00:03     ;
+; Top              ; 00:00:06     ;
 ; sld_hub:auto_hub ; 00:00:00     ;
 +------------------+--------------+
 
@@ -8725,54 +8725,54 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
-    Info: Processing started: Fri Feb 13 11:56:29 2026
+    Info: Processing started: Mon Mar 09 08:50:34 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ROBOT -c ROBOT
-Info (11104): Parallel Compilation has detected 24 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 16 of the 16 physical processors detected instead.
+Info (11104): Parallel Compilation has detected 12 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 6 of the 6 physical processors detected instead.
 Info (12248): Elaborating Qsys system entity "nios_system_sdram.qsys"
-Info (12250): 2026.02.13.11:56:41 Progress: Loading ROBOT/nios_system_sdram.qsys
-Info (12250): 2026.02.13.11:56:42 Progress: Reading input file
-Info (12250): 2026.02.13.11:56:42 Progress: Adding clk_0 [clock_source 13.0]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module clk_0
-Info (12250): 2026.02.13.11:56:42 Progress: Adding nios2_qsys_0 [altera_nios2_qsys 13.0]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module nios2_qsys_0
-Info (12250): 2026.02.13.11:56:42 Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 13.0.1.99.2]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module onchip_memory2_0
-Info (12250): 2026.02.13.11:56:42 Progress: Adding switches [altera_avalon_pio 13.0.1.99.2]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module switches
-Info (12250): 2026.02.13.11:56:42 Progress: Adding LEDs [altera_avalon_pio 13.0.1.99.2]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module LEDs
-Info (12250): 2026.02.13.11:56:42 Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 13.0.1.99.2]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module jtag_uart_0
-Info (12250): 2026.02.13.11:56:42 Progress: Adding sdram [altera_avalon_new_sdram_controller 13.0.1.99.2]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module sdram
-Info (12250): 2026.02.13.11:56:42 Progress: Adding motor_right [altera_avalon_pio 13.0.1.99.2]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module motor_right
-Info (12250): 2026.02.13.11:56:42 Progress: Adding motor_left [altera_avalon_pio 13.0.1.99.2]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module motor_left
-Info (12250): 2026.02.13.11:56:42 Progress: Adding clocks [altera_up_clocks 13.0]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module clocks
-Info (12250): 2026.02.13.11:56:42 Progress: Adding sensor_control [altera_avalon_pio 13.0.1.99.2]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module sensor_control
-Info (12250): 2026.02.13.11:56:42 Progress: Adding sensor_status [altera_avalon_pio 13.0.1.99.2]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module sensor_status
-Info (12250): 2026.02.13.11:56:42 Progress: Adding sensor_data0 [altera_avalon_pio 13.0.1.99.2]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module sensor_data0
-Info (12250): 2026.02.13.11:56:42 Progress: Adding sensor_data1 [altera_avalon_pio 13.0.1.99.2]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module sensor_data1
-Info (12250): 2026.02.13.11:56:42 Progress: Adding sensor_data2 [altera_avalon_pio 13.0.1.99.2]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module sensor_data2
-Info (12250): 2026.02.13.11:56:42 Progress: Adding sensor_data3 [altera_avalon_pio 13.0.1.99.2]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module sensor_data3
-Info (12250): 2026.02.13.11:56:42 Progress: Adding sensor_data4 [altera_avalon_pio 13.0.1.99.2]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module sensor_data4
-Info (12250): 2026.02.13.11:56:42 Progress: Adding sensor_data5 [altera_avalon_pio 13.0.1.99.2]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module sensor_data5
-Info (12250): 2026.02.13.11:56:42 Progress: Adding sensor_data6 [altera_avalon_pio 13.0.1.99.2]
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing module sensor_data6
-Info (12250): 2026.02.13.11:56:42 Progress: Building connections
-Info (12250): 2026.02.13.11:56:42 Progress: Parameterizing connections
-Info (12250): 2026.02.13.11:56:42 Progress: Validating
-Info (12250): 2026.02.13.11:56:43 Progress: Done reading input file
+Info (12250): 2026.03.09.08:50:46 Progress: Loading ROBOT/nios_system_sdram.qsys
+Info (12250): 2026.03.09.08:50:46 Progress: Reading input file
+Info (12250): 2026.03.09.08:50:46 Progress: Adding clk_0 [clock_source 13.0]
+Info (12250): 2026.03.09.08:50:46 Progress: Parameterizing module clk_0
+Info (12250): 2026.03.09.08:50:46 Progress: Adding nios2_qsys_0 [altera_nios2_qsys 13.0]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module nios2_qsys_0
+Info (12250): 2026.03.09.08:50:47 Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 13.0.1.99.2]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module onchip_memory2_0
+Info (12250): 2026.03.09.08:50:47 Progress: Adding switches [altera_avalon_pio 13.0.1.99.2]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module switches
+Info (12250): 2026.03.09.08:50:47 Progress: Adding LEDs [altera_avalon_pio 13.0.1.99.2]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module LEDs
+Info (12250): 2026.03.09.08:50:47 Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 13.0.1.99.2]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module jtag_uart_0
+Info (12250): 2026.03.09.08:50:47 Progress: Adding sdram [altera_avalon_new_sdram_controller 13.0.1.99.2]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module sdram
+Info (12250): 2026.03.09.08:50:47 Progress: Adding motor_right [altera_avalon_pio 13.0.1.99.2]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module motor_right
+Info (12250): 2026.03.09.08:50:47 Progress: Adding motor_left [altera_avalon_pio 13.0.1.99.2]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module motor_left
+Info (12250): 2026.03.09.08:50:47 Progress: Adding clocks [altera_up_clocks 13.0]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module clocks
+Info (12250): 2026.03.09.08:50:47 Progress: Adding sensor_control [altera_avalon_pio 13.0.1.99.2]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module sensor_control
+Info (12250): 2026.03.09.08:50:47 Progress: Adding sensor_status [altera_avalon_pio 13.0.1.99.2]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module sensor_status
+Info (12250): 2026.03.09.08:50:47 Progress: Adding sensor_data0 [altera_avalon_pio 13.0.1.99.2]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module sensor_data0
+Info (12250): 2026.03.09.08:50:47 Progress: Adding sensor_data1 [altera_avalon_pio 13.0.1.99.2]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module sensor_data1
+Info (12250): 2026.03.09.08:50:47 Progress: Adding sensor_data2 [altera_avalon_pio 13.0.1.99.2]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module sensor_data2
+Info (12250): 2026.03.09.08:50:47 Progress: Adding sensor_data3 [altera_avalon_pio 13.0.1.99.2]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module sensor_data3
+Info (12250): 2026.03.09.08:50:47 Progress: Adding sensor_data4 [altera_avalon_pio 13.0.1.99.2]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module sensor_data4
+Info (12250): 2026.03.09.08:50:47 Progress: Adding sensor_data5 [altera_avalon_pio 13.0.1.99.2]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module sensor_data5
+Info (12250): 2026.03.09.08:50:47 Progress: Adding sensor_data6 [altera_avalon_pio 13.0.1.99.2]
+Info (12250): 2026.03.09.08:50:47 Progress: Parameterizing module sensor_data6
+Info (12250): 2026.03.09.08:50:47 Progress: Building connections
+Info (12250): 2026.03.09.08:50:48 Progress: Parameterizing connections
+Info (12250): 2026.03.09.08:50:48 Progress: Validating
+Info (12250): 2026.03.09.08:50:49 Progress: Done reading input file
 Info (12250): Nios_system_sdram.switches: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info (12250): Nios_system_sdram.sensor_status: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info (12250): Nios_system_sdram.sensor_data0: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
@@ -8928,40 +8928,40 @@ Warning (12251): Nios_system_sdram: "No matching role found for rst_controller:r
 Warning (12251): Nios_system_sdram: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
 Warning (12251): Nios_system_sdram: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
 Info (12250): Nios2_qsys_0: Starting RTL generation for module 'nios_system_sdram_nios2_qsys_0'
-Info (12250): Nios2_qsys_0:   Generation command is [exec C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/eperl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -- C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=nios_system_sdram_nios2_qsys_0 --dir=C:/Users/fchiha/AppData/Local/Temp/alt0497_784895954779023435.dir/0001_nios2_qsys_0_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/fchiha/AppData/Local/Temp/alt0497_784895954779023435.dir/0001_nios2_qsys_0_gen//nios_system_sdram_nios2_qsys_0_processor_configuration.pl  --do_build_sim=0    --bogus  ]
-Info (12250): Nios2_qsys_0: # 2026.02.13 11:56:48 (*) Starting Nios II generation
-Info (12250): Nios2_qsys_0: # 2026.02.13 11:56:48 (*)   Checking for plaintext license.
-Info (12250): Nios2_qsys_0: # 2026.02.13 11:57:06 (*)   Plaintext license not found.
-Info (12250): Nios2_qsys_0: # 2026.02.13 11:57:06 (*)   No license required to generate encrypted Nios II/e.
-Info (12250): Nios2_qsys_0: # 2026.02.13 11:57:06 (*)   Elaborating CPU configuration settings
-Info (12250): Nios2_qsys_0: # 2026.02.13 11:57:06 (*)   Creating all objects for CPU
-Info (12250): Nios2_qsys_0: # 2026.02.13 11:57:06 (*)   Generating RTL from CPU objects
-Info (12250): Nios2_qsys_0: # 2026.02.13 11:57:06 (*)   Creating plain-text RTL
-Info (12250): Nios2_qsys_0: # 2026.02.13 11:57:07 (*) Done Nios II generation
+Info (12250): Nios2_qsys_0:   Generation command is [exec C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/eperl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -- C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=nios_system_sdram_nios2_qsys_0 --dir=C:/Users/fchiha/AppData/Local/Temp/alt0521_48344373799557322.dir/0001_nios2_qsys_0_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/fchiha/AppData/Local/Temp/alt0521_48344373799557322.dir/0001_nios2_qsys_0_gen//nios_system_sdram_nios2_qsys_0_processor_configuration.pl  --do_build_sim=0    --bogus  ]
+Info (12250): Nios2_qsys_0: # 2026.03.09 08:50:56 (*) Starting Nios II generation
+Info (12250): Nios2_qsys_0: # 2026.03.09 08:50:56 (*)   Checking for plaintext license.
+Info (12250): Nios2_qsys_0: # 2026.03.09 08:51:13 (*)   Plaintext license not found.
+Info (12250): Nios2_qsys_0: # 2026.03.09 08:51:13 (*)   No license required to generate encrypted Nios II/e.
+Info (12250): Nios2_qsys_0: # 2026.03.09 08:51:13 (*)   Elaborating CPU configuration settings
+Info (12250): Nios2_qsys_0: # 2026.03.09 08:51:13 (*)   Creating all objects for CPU
+Info (12250): Nios2_qsys_0: # 2026.03.09 08:51:14 (*)   Generating RTL from CPU objects
+Info (12250): Nios2_qsys_0: # 2026.03.09 08:51:14 (*)   Creating plain-text RTL
+Info (12250): Nios2_qsys_0: # 2026.03.09 08:51:16 (*) Done Nios II generation
 Info (12250): Nios2_qsys_0: Done RTL generation for module 'nios_system_sdram_nios2_qsys_0'
 Info (12250): Nios2_qsys_0: "nios_system_sdram" instantiated altera_nios2_qsys "nios2_qsys_0"
 Info (12250): Onchip_memory2_0: Starting RTL generation for module 'nios_system_sdram_onchip_memory2_0'
-Info (12250): Onchip_memory2_0:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=nios_system_sdram_onchip_memory2_0 --dir=C:/Users/fchiha/AppData/Local/Temp/alt0497_784895954779023435.dir/0002_onchip_memory2_0_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/fchiha/AppData/Local/Temp/alt0497_784895954779023435.dir/0002_onchip_memory2_0_gen//nios_system_sdram_onchip_memory2_0_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Onchip_memory2_0:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=nios_system_sdram_onchip_memory2_0 --dir=C:/Users/fchiha/AppData/Local/Temp/alt0521_48344373799557322.dir/0002_onchip_memory2_0_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/fchiha/AppData/Local/Temp/alt0521_48344373799557322.dir/0002_onchip_memory2_0_gen//nios_system_sdram_onchip_memory2_0_component_configuration.pl  --do_build_sim=0  ]
 Info (12250): Onchip_memory2_0: Done RTL generation for module 'nios_system_sdram_onchip_memory2_0'
 Info (12250): Onchip_memory2_0: "nios_system_sdram" instantiated altera_avalon_onchip_memory2 "onchip_memory2_0"
 Info (12250): Switches: Starting RTL generation for module 'nios_system_sdram_switches'
-Info (12250): Switches:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=nios_system_sdram_switches --dir=C:/Users/fchiha/AppData/Local/Temp/alt0497_784895954779023435.dir/0003_switches_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/fchiha/AppData/Local/Temp/alt0497_784895954779023435.dir/0003_switches_gen//nios_system_sdram_switches_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Switches:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=nios_system_sdram_switches --dir=C:/Users/fchiha/AppData/Local/Temp/alt0521_48344373799557322.dir/0003_switches_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/fchiha/AppData/Local/Temp/alt0521_48344373799557322.dir/0003_switches_gen//nios_system_sdram_switches_component_configuration.pl  --do_build_sim=0  ]
 Info (12250): Switches: Done RTL generation for module 'nios_system_sdram_switches'
 Info (12250): Switches: "nios_system_sdram" instantiated altera_avalon_pio "switches"
 Info (12250): LEDs: Starting RTL generation for module 'nios_system_sdram_LEDs'
-Info (12250): LEDs:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=nios_system_sdram_LEDs --dir=C:/Users/fchiha/AppData/Local/Temp/alt0497_784895954779023435.dir/0004_LEDs_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/fchiha/AppData/Local/Temp/alt0497_784895954779023435.dir/0004_LEDs_gen//nios_system_sdram_LEDs_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): LEDs:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=nios_system_sdram_LEDs --dir=C:/Users/fchiha/AppData/Local/Temp/alt0521_48344373799557322.dir/0004_LEDs_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/fchiha/AppData/Local/Temp/alt0521_48344373799557322.dir/0004_LEDs_gen//nios_system_sdram_LEDs_component_configuration.pl  --do_build_sim=0  ]
 Info (12250): LEDs: Done RTL generation for module 'nios_system_sdram_LEDs'
 Info (12250): LEDs: "nios_system_sdram" instantiated altera_avalon_pio "LEDs"
 Info (12250): Jtag_uart_0: Starting RTL generation for module 'nios_system_sdram_jtag_uart_0'
-Info (12250): Jtag_uart_0:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=nios_system_sdram_jtag_uart_0 --dir=C:/Users/fchiha/AppData/Local/Temp/alt0497_784895954779023435.dir/0005_jtag_uart_0_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/fchiha/AppData/Local/Temp/alt0497_784895954779023435.dir/0005_jtag_uart_0_gen//nios_system_sdram_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Jtag_uart_0:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=nios_system_sdram_jtag_uart_0 --dir=C:/Users/fchiha/AppData/Local/Temp/alt0521_48344373799557322.dir/0005_jtag_uart_0_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/fchiha/AppData/Local/Temp/alt0521_48344373799557322.dir/0005_jtag_uart_0_gen//nios_system_sdram_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
 Info (12250): Jtag_uart_0: Done RTL generation for module 'nios_system_sdram_jtag_uart_0'
 Info (12250): Jtag_uart_0: "nios_system_sdram" instantiated altera_avalon_jtag_uart "jtag_uart_0"
 Info (12250): Sdram: Starting RTL generation for module 'nios_system_sdram_sdram'
-Info (12250): Sdram:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=nios_system_sdram_sdram --dir=C:/Users/fchiha/AppData/Local/Temp/alt0497_784895954779023435.dir/0006_sdram_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/fchiha/AppData/Local/Temp/alt0497_784895954779023435.dir/0006_sdram_gen//nios_system_sdram_sdram_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Sdram:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=nios_system_sdram_sdram --dir=C:/Users/fchiha/AppData/Local/Temp/alt0521_48344373799557322.dir/0006_sdram_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/fchiha/AppData/Local/Temp/alt0521_48344373799557322.dir/0006_sdram_gen//nios_system_sdram_sdram_component_configuration.pl  --do_build_sim=0  ]
 Info (12250): Sdram: Done RTL generation for module 'nios_system_sdram_sdram'
 Info (12250): Sdram: "nios_system_sdram" instantiated altera_avalon_new_sdram_controller "sdram"
 Info (12250): Motor_right: Starting RTL generation for module 'nios_system_sdram_motor_right'
-Info (12250): Motor_right:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=nios_system_sdram_motor_right --dir=C:/Users/fchiha/AppData/Local/Temp/alt0497_784895954779023435.dir/0007_motor_right_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/fchiha/AppData/Local/Temp/alt0497_784895954779023435.dir/0007_motor_right_gen//nios_system_sdram_motor_right_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Motor_right:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=nios_system_sdram_motor_right --dir=C:/Users/fchiha/AppData/Local/Temp/alt0521_48344373799557322.dir/0007_motor_right_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/fchiha/AppData/Local/Temp/alt0521_48344373799557322.dir/0007_motor_right_gen//nios_system_sdram_motor_right_component_configuration.pl  --do_build_sim=0  ]
 Info (12250): Motor_right: Done RTL generation for module 'nios_system_sdram_motor_right'
 Info (12250): Motor_right: "nios_system_sdram" instantiated altera_avalon_pio "motor_right"
 Info (12250): Clocks: Starting Generation of Required Clocks for DE-Series Boards
@@ -9548,18 +9548,18 @@ Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
 Warning (15899): PLL "nios_system_sdram:NiosII|nios_system_sdram_clocks:clocks|altpll:DE_Clock_Generator_System|altpll_6rb2:auto_generated|pll1" has parameters clk2_multiply_by and clk2_divide_by specified but port CLK[2] is not connected
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "MTR_Fault_n"
-Info (21057): Implemented 3722 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 3725 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 42 output pins
     Info (21060): Implemented 16 bidirectional pins
-    Info (21061): Implemented 3503 logic cells
+    Info (21061): Implemented 3506 logic cells
     Info (21064): Implemented 144 RAM segments
     Info (21065): Implemented 1 PLLs
 Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 190 warnings
-    Info: Peak virtual memory: 561 megabytes
-    Info: Processing ended: Fri Feb 13 11:57:23 2026
-    Info: Elapsed time: 00:00:54
-    Info: Total CPU time (on all processors): 00:00:18
+    Info: Peak virtual memory: 535 megabytes
+    Info: Processing ended: Mon Mar 09 08:51:38 2026
+    Info: Elapsed time: 00:01:04
+    Info: Total CPU time (on all processors): 00:00:34
 
 
 +------------------------------------------+

@@ -38,8 +38,8 @@ nios_system_sdram/synthesis/submodules/
 *.mif
 
 # Temporary files
-*.ncf
-*_generation*.rpt
+# *.ncf
+# *_generation*.rpt
 
 # Keep important source files
 !*.qsf
