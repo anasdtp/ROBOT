@@ -102,6 +102,14 @@
          type = "int";
       }
    }
+   element position_ligne
+   {
+      datum _sortIndex
+      {
+         value = "19";
+         type = "int";
+      }
+   }
    element switches.s1
    {
       datum _lockedAddress
@@ -112,110 +120,6 @@
       datum baseAddress
       {
          value = "8192";
-         type = "String";
-      }
-   }
-   element sensor_data3.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "4208";
-         type = "String";
-      }
-   }
-   element sensor_data4.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "4224";
-         type = "String";
-      }
-   }
-   element motor_right.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "4112";
-         type = "String";
-      }
-   }
-   element sensor_data0.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "4160";
-         type = "String";
-      }
-   }
-   element LEDs.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "8208";
-         type = "String";
-      }
-   }
-   element sensor_control.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "4128";
-         type = "String";
-      }
-   }
-   element sensor_data2.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "4192";
-         type = "String";
-      }
-   }
-   element sensor_data6.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "4256";
          type = "String";
       }
    }
@@ -232,19 +136,6 @@
          type = "String";
       }
    }
-   element sdram.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "67108864";
-         type = "String";
-      }
-   }
    element onchip_memory2_0.s1
    {
       datum _lockedAddress
@@ -258,7 +149,7 @@
          type = "String";
       }
    }
-   element sensor_data1.s1
+   element sensor_status.s1
    {
       datum _lockedAddress
       {
@@ -267,7 +158,46 @@
       }
       datum baseAddress
       {
-         value = "4176";
+         value = "4144";
+         type = "String";
+      }
+   }
+   element motor_right.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "4112";
+         type = "String";
+      }
+   }
+   element sensor_control.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "4128";
+         type = "String";
+      }
+   }
+   element sdram.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "67108864";
          type = "String";
       }
    }
@@ -284,7 +214,7 @@
          type = "String";
       }
    }
-   element sensor_status.s1
+   element sensor_data0.s1
    {
       datum _lockedAddress
       {
@@ -293,7 +223,98 @@
       }
       datum baseAddress
       {
-         value = "4144";
+         value = "4160";
+         type = "String";
+      }
+   }
+   element sensor_data2.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "4192";
+         type = "String";
+      }
+   }
+   element sensor_data4.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "4224";
+         type = "String";
+      }
+   }
+   element sensor_data6.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "4256";
+         type = "String";
+      }
+   }
+   element LEDs.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "8208";
+         type = "String";
+      }
+   }
+   element sensor_data1.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "4176";
+         type = "String";
+      }
+   }
+   element position_ligne.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "4272";
+         type = "String";
+      }
+   }
+   element sensor_data3.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "4208";
          type = "String";
       }
    }
@@ -400,7 +421,7 @@
  <parameter name="projectName" value="ROBOT.qpf" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="1" />
- <parameter name="timeStamp" value="1770970101044" />
+ <parameter name="timeStamp" value="1773401234191" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
@@ -470,6 +491,11 @@
  <interface
    name="sensor_data6"
    internal="sensor_data6.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="position_ligne"
+   internal="position_ligne.external_connection"
    type="conduit"
    dir="end" />
  <module kind="clock_source" version="13.0" enabled="1" name="clk_0">
@@ -584,7 +610,7 @@
   <parameter name="tightlyCoupledInstructionMaster2AddrWidth" value="1" />
   <parameter name="tightlyCoupledInstructionMaster3AddrWidth" value="1" />
   <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='sdram.s1' start='0x4000000' end='0x6000000' /></address-map>]]></parameter>
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' /><slave name='motor_left.s1' start='0x1000' end='0x1010' /><slave name='motor_right.s1' start='0x1010' end='0x1020' /><slave name='sensor_control.s1' start='0x1020' end='0x1030' /><slave name='sensor_status.s1' start='0x1030' end='0x1040' /><slave name='sensor_data0.s1' start='0x1040' end='0x1050' /><slave name='sensor_data1.s1' start='0x1050' end='0x1060' /><slave name='sensor_data2.s1' start='0x1060' end='0x1070' /><slave name='sensor_data3.s1' start='0x1070' end='0x1080' /><slave name='sensor_data4.s1' start='0x1080' end='0x1090' /><slave name='sensor_data5.s1' start='0x1090' end='0x10A0' /><slave name='sensor_data6.s1' start='0x10A0' end='0x10B0' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='switches.s1' start='0x2000' end='0x2010' /><slave name='LEDs.s1' start='0x2010' end='0x2020' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x2020' end='0x2028' /><slave name='sdram.s1' start='0x4000000' end='0x6000000' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' /><slave name='motor_left.s1' start='0x1000' end='0x1010' /><slave name='motor_right.s1' start='0x1010' end='0x1020' /><slave name='sensor_control.s1' start='0x1020' end='0x1030' /><slave name='sensor_status.s1' start='0x1030' end='0x1040' /><slave name='sensor_data0.s1' start='0x1040' end='0x1050' /><slave name='sensor_data1.s1' start='0x1050' end='0x1060' /><slave name='sensor_data2.s1' start='0x1060' end='0x1070' /><slave name='sensor_data3.s1' start='0x1070' end='0x1080' /><slave name='sensor_data4.s1' start='0x1080' end='0x1090' /><slave name='sensor_data5.s1' start='0x1090' end='0x10A0' /><slave name='sensor_data6.s1' start='0x10A0' end='0x10B0' /><slave name='position_ligne.s1' start='0x10B0' end='0x10C0' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='switches.s1' start='0x2000' end='0x2010' /><slave name='LEDs.s1' start='0x2010' end='0x2020' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x2020' end='0x2028' /><slave name='sdram.s1' start='0x4000000' end='0x6000000' /></address-map>]]></parameter>
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="deviceFamilyName" value="Cyclone IV E" />
   <parameter name="internalIrqMaskSystemInfo" value="32" />
@@ -914,6 +940,24 @@
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="8" />
+  <parameter name="clockRate" value="50000000" />
+ </module>
+ <module
+   kind="altera_avalon_pio"
+   version="13.0.1.99.2"
+   enabled="1"
+   name="position_ligne">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="3" />
   <parameter name="clockRate" value="50000000" />
  </module>
  <connection
@@ -1353,6 +1397,30 @@
    version="13.0"
    start="nios2_qsys_0.jtag_debug_module_reset"
    end="sensor_data6.reset" />
+ <connection
+   kind="reset"
+   version="13.0"
+   start="clk_0.clk_reset"
+   end="position_ligne.reset" />
+ <connection
+   kind="clock"
+   version="13.0"
+   start="clocks.sys_clk"
+   end="position_ligne.clk" />
+ <connection
+   kind="avalon"
+   version="13.0"
+   start="nios2_qsys_0.data_master"
+   end="position_ligne.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x10b0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="reset"
+   version="13.0"
+   start="nios2_qsys_0.jtag_debug_module_reset"
+   end="position_ligne.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
 </system>

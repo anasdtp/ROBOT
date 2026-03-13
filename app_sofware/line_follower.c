@@ -24,6 +24,8 @@
 #define SENSOR_DATA2      0x00001060
 #define SENSOR_DATA3      0x00001070
 #define SENSOR_DATA4      0x00001080
+#define SENSOR_DATA5      0x00001090
+#define SENSOR_DATA6      0x000010a0
 #define SENSOR_DATA_READY 0x00001030
 
 /* ===== MACROS ACCES MEMOIRE ===== */
@@ -36,21 +38,22 @@
 #define SPEED_MASK        0x0FFF    /* Bits 11-0 */
 
 #define MIN_SPEED         0x3600    /* 1792 - Vitesse minimale */
-#define MAX_SPEED         0x3FF0    /* 4080 - Vitesse maximale */
-#define BASE_SPEED        0x3740    /* 2304 - Vitesse de base */
+#define MAX_SPEED         0x39F0    /* 4080 - Vitesse maximale */
+
+#define BASE_SPEED        450    /* 2304 - Vitesse de base */
 
 /* ===== PARAMETRES PID ===== */
-#define KP                2.5       /* Gain proportionnel */
+#define KP                900     /* Gain proportionnel */
 #define KI                0.0      /* Gain intégral */
-#define KD                0.5       /* Gain dérivé */
+#define KD                0.0       /* Gain dérivé */
 #define MAX_INTEGRAL      500.0     /* Anti-windup */
 
 /* ===== CONSTANTES CAPTEURS ===== */
-#define NUM_SENSORS       5
+#define NUM_SENSORS       7
 
 /* ===== VARIABLES GLOBALES ===== */
 unsigned int sensor_values[NUM_SENSORS];
-unsigned int sensor_thresholds[NUM_SENSORS] = {120, 120, 120, 120, 120};  /* Seuil par capteur - calibré */
+unsigned int sensor_thresholds[NUM_SENSORS] = {110, 110, 110, 110, 110, 110, 110};  /* Seuil par capteur - calibré */
 int robot_running = 0;            /* Robot actif si 1 */
 
 /* Variables PID */
@@ -65,6 +68,11 @@ void delay_ms(int ms) {
         for(j = 0; j < 1000; j++);
 }
 
+
+int map(int x, int in_min, int in_max, int out_min, int out_max) {
+    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
 /* Lire tous les capteurs de sol */
 void read_sensors(void) {
     sensor_values[0] = (IORD(SENSOR_DATA0)) & 0xFFFF;
@@ -72,11 +80,13 @@ void read_sensors(void) {
     sensor_values[2] = (IORD(SENSOR_DATA2)) & 0xFFFF;
     sensor_values[3] = (IORD(SENSOR_DATA3)) & 0xFFFF;
     sensor_values[4] = (IORD(SENSOR_DATA4)) & 0xFFFF;
+    sensor_values[5] = (IORD(SENSOR_DATA5)) & 0xFFFF;
+    sensor_values[6] = (IORD(SENSOR_DATA6)) & 0xFFFF;
 }
 
 /* 
  * Calculer la position de la ligne
- * Retourne: -2000 (extrême gauche) à +2000 (extrême droite)
+ * Retourne: -3 (extrême gauche) à +3 (extrême droite)
  *           0 = ligne au centre
  */
 int line_position(void) {
@@ -89,8 +99,8 @@ int line_position(void) {
         if(sensor_values[i] > sensor_thresholds[i]) {
             /* Capteur detecte du noir */
             black_count++;
-            /* Pondération: -2 (gauche) à +2 (droite) */
-            int weight = (i - 2) * 1000;  /* -2000, -1000, 0, 1000, 2000 */
+            /* Pondération: -3 (gauche) à +3 (droite) */
+            int weight = (i - 3);  /* -3, -2, -1, 0, 1, 2, 3 */
             weighted_sum += weight;
             sum += 1;
         }
@@ -98,7 +108,7 @@ int line_position(void) {
     
     if(sum == 0) {
         /* Pas de ligne detectée */
-        return prev_error > 0 ? 2000 : -2000;
+        return prev_error > 0 ? 3 : -3;
     }
     
     return weighted_sum / sum;
@@ -126,8 +136,8 @@ int calculate_pid(float error) {
     output = KP * error + KI * integral + KD * derivative;
     
     /* Saturation */
-    if(output > 500) output = 500;
-    if(output < -500) output = -500;
+    // if(output > 700) output = 700;
+    // if(output < -700) output = -700;
     
     return (int)output;
 }
@@ -140,12 +150,37 @@ void stop_motors(void) {
 
 /* 
  * Contrôler les moteurs
- * speed_right, speed_left: vitesse en compte tenu de la formule GO_BIT | speed
+ * speed_right, speed_left: vitesse (valeur positive ou négative)
+ * Si négatif: rotation inversée (DIR_BIT activé)
  */
 void set_motors(int speed_right, int speed_left) {
-    int right_cmd = GO_BIT | (speed_right & SPEED_MASK);
-    int left_cmd = GO_BIT | (speed_left & SPEED_MASK);
+    int right_cmd = GO_BIT;
+    int left_cmd = GO_BIT;
     
+    /* Moteur droit */
+    if(speed_right < 0) {
+        right_cmd |= DIR_BIT;
+        speed_right = -speed_right;  /* Inversion pour correspondre à la logique du moteur */
+    }
+    
+    /* Moteur gauche */
+    if(speed_left < 0) {
+        left_cmd |= DIR_BIT;
+        speed_left = -speed_left;  /* Inversion pour correspondre à la logique du moteur */
+    }
+
+    speed_right = map(speed_right, 0, 2000, MIN_SPEED, MAX_SPEED);
+    speed_left = map(speed_left, 0, 2000, MIN_SPEED, MAX_SPEED);
+
+    /* Saturation */
+    if(speed_right > MAX_SPEED) speed_right = MAX_SPEED;
+    if(speed_right < MIN_SPEED) speed_right = MIN_SPEED;
+    if(speed_left > MAX_SPEED) speed_left = MAX_SPEED;
+    if(speed_left < MIN_SPEED) speed_left = MIN_SPEED;
+
+    right_cmd |= (-speed_right & SPEED_MASK);
+    left_cmd |= (-speed_left & SPEED_MASK);
+
     IOWR(MOTOR_RIGHT_BASE, right_cmd);
     IOWR(MOTOR_LEFT_BASE, left_cmd);
 }
@@ -159,23 +194,17 @@ void line_follow(void) {
     /* Lire capteurs */
     read_sensors();
     
-    /* Calculer position ligne */
+    /* Calculer position ligne (pour affichage LED et PID) */
     position = line_position();
     last_position = position;  /* Mémoriser pour affichage LED */
     
-    /* PID */
+    /* PID basé sur la position de la ligne */
     speed_correction = calculate_pid((float)position);
     
     /* Appliquer correction aux moteurs */
-    /* Si ligne à droite: motoriser left, freiner right */
+    /* Si capteur_2 > capteur_4 : ligne vire à gauche, ralentir droit, accélérer gauche */
     right_speed = BASE_SPEED + speed_correction;
     left_speed = BASE_SPEED - speed_correction;
-    
-    /* Saturation */
-    if(right_speed > MAX_SPEED) right_speed = MAX_SPEED;
-    if(right_speed < MIN_SPEED) right_speed = MIN_SPEED;
-    if(left_speed > MAX_SPEED) left_speed = MAX_SPEED;
-    if(left_speed < MIN_SPEED) left_speed = MIN_SPEED;
     
     /* Envoyer aux moteurs */
     set_motors(right_speed, left_speed);

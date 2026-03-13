@@ -8,4 +8,13 @@
         <processor JTAGHubInstanceID="0">nios2_qsys_0</processor>
         <terminal JTAGHubInstanceID="0">jtag_uart_0</terminal>
     </system>
+    <program>
+        <type>BSP</type>
+        <options>
+            <source_files>
+                <source_file filepath="true">app_sofware\line_follower.c</source_file>
+            </source_files>
+            <bsp_settings_tcl_script filepath="true"/>
+        </options>
+    </program>
 </nios2_config>

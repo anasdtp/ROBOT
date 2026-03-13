@@ -17,8 +17,8 @@
   </columns>
  </clocktable>
  <library
-   expandedCategories="Library/Peripherals,Library/Peripherals/Microcontroller Peripherals,Project,Library" />
- <window width="1600" height="852" x="0" y="0" />
+   expandedCategories="Library,Project,Library/Peripherals/Microcontroller Peripherals,Library/Peripherals" />
+ <window width="1600" height="852" x="-112" y="120" />
  <generation path="_PROJECT_NAME_" />
  <hdlexample language="VHDL" />
 </preferences>

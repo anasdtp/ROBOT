@@ -8,6 +8,7 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.std_logic_arith.all;
 USE ieee.std_logic_unsigned.all;
+USE ieee.numeric_std.all;
 
 ENTITY ROBOT IS
 PORT (
@@ -95,6 +96,22 @@ PORT (
 	dc_motor_p_L, dc_motor_n_L : OUT STD_LOGIC );
 END COMPONENT;
 
+COMPONENT position_ligne
+PORT (
+	clk         : IN STD_LOGIC;
+	reset_n     : IN STD_LOGIC;
+	sensor_ready: IN STD_LOGIC;
+	sensor0     : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+	sensor1     : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+	sensor2     : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+	sensor3     : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+	sensor4     : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+	sensor5     : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+	sensor6     : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+	position    : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+	line_lost   : OUT STD_LOGIC );
+END COMPONENT;
+
 -- Fault signal (not used in this version, just monitored)
 signal motor_fault : STD_LOGIC;
 
@@ -114,6 +131,10 @@ signal data3_sig : STD_LOGIC_VECTOR(7 DOWNTO 0);
 signal data4_sig : STD_LOGIC_VECTOR(7 DOWNTO 0);
 signal data5_sig : STD_LOGIC_VECTOR(7 DOWNTO 0);
 signal data6_sig : STD_LOGIC_VECTOR(7 DOWNTO 0);
+
+-- Signals from position_ligne module
+signal position_sig : STD_LOGIC_VECTOR(3 DOWNTO 0);
+signal line_lost_sig : STD_LOGIC;
 
 -- Clock divider for 2 KHz data_capture signal
 -- 50 MHz / 2 KHz = 25000
@@ -192,6 +213,23 @@ PORT MAP (
 	ADC_SDO => LTC_ADC_SDO );
 
 
+-- Instantiate position_ligne module
+Position: position_ligne
+PORT MAP (
+	clk => CLOCK_50,
+	reset_n => KEY(0),
+	sensor_ready => data_ready_sig,
+	sensor0 => data0_sig,
+	sensor1 => data1_sig,
+	sensor2 => data2_sig,
+	sensor3 => data3_sig,
+	sensor4 => data4_sig,
+	sensor5 => data5_sig,
+	sensor6 => data6_sig,
+	position => position_sig,
+	line_lost => line_lost_sig );
+
+
 -- Instantiate PWM generation for motor control
 PWM_Motors: PWM_generation
 PORT MAP (
@@ -211,5 +249,34 @@ motor_fault <= MTR_Fault_n; -- Monitor fault signal
 -- Sensor power control (A-Cute Car)
 VCC3P3_PWRON_n <= '0'; -- Enable 3.3V power for sensors (active low)
 IR_LED_ON <= '1'; -- Enable IR LEDs for line sensors
+
+--==============================================================
+-- Position to LEDs mapping
+-- Convertit position de ligne (-3 à +3) en pattern LED
+--==============================================================
+process(position_sig)
+    variable pos : signed(3 downto 0);
+begin
+    pos := signed(position_sig);
+    
+    case pos is
+        when to_signed(-3, 4) =>
+            LED <= "00000001";  -- LED0 - Extrême gauche
+        when to_signed(-2, 4) =>
+            LED <= "00000010";  -- LED1 - Gauche
+        when to_signed(-1, 4) =>
+            LED <= "00000100";  -- LED2 - Légèrement gauche
+        when to_signed(0, 4) =>
+            LED <= "00001000";  -- LED3 - Centre
+        when to_signed(1, 4) =>
+            LED <= "00010000";  -- LED4 - Légèrement droite
+        when to_signed(2, 4) =>
+            LED <= "00100000";  -- LED5 - Droite
+        when to_signed(3, 4) =>
+            LED <= "10000000";  -- LED7 - Extrême droite
+        when others =>
+            LED <= "00000000";  -- Aucune LED
+    end case;
+end process;
 
 END Structure;
