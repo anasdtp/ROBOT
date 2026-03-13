@@ -73,20 +73,27 @@ begin
     );
     
     --==============================================================
-    -- Étape 3: Calcul de la somme pondérée
+    -- Étape 3 & 4: Calcul de la somme pondérée et division
     -- Poids: -3, -2, -1, 0, +1, +2, +3
     --==============================================================
-    weighted_sum <=
-        (detect0 * to_signed(-3, 6)) +
-        (detect1 * to_signed(-2, 6)) +
-        (detect2 * to_signed(-1, 6)) +
-        (detect3 * to_signed( 0, 6)) +
-        (detect4 * to_signed( 1, 6)) +
-        (detect5 * to_signed( 2, 6)) +
-        (detect6 * to_signed( 3, 6));
+    process(detect0, detect1, detect2, detect3, detect4, detect5, detect6, num_black)
+        variable temp_sum : signed(5 downto 0);
+    begin
+        -- Calcul de la somme pondérée
+        temp_sum := to_signed(0, 6);
+        if detect0 = '1' then temp_sum := temp_sum + to_signed(-3, 6); end if;
+        if detect1 = '1' then temp_sum := temp_sum + to_signed(-2, 6); end if;
+        if detect2 = '1' then temp_sum := temp_sum + to_signed(-1, 6); end if;
+        if detect3 = '1' then temp_sum := temp_sum + to_signed( 0, 6); end if;
+        if detect4 = '1' then temp_sum := temp_sum + to_signed( 1, 6); end if;
+        if detect5 = '1' then temp_sum := temp_sum + to_signed( 2, 6); end if;
+        if detect6 = '1' then temp_sum := temp_sum + to_signed( 3, 6); end if;
+        
+        weighted_sum <= temp_sum;
+    end process;
     
     --==============================================================
-    -- Étape 4: Division rapide par approx (shift)
+    -- Division rapide par approx (shift)
     -- num_black = nombre de capteurs noirs détectés
     -- Approximation rapide sans division complète
     --==============================================================

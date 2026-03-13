@@ -6,8 +6,6 @@
 -- SDRAM ports correspond to the SDRAM signals on the DE-series board.
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
-USE ieee.std_logic_arith.all;
-USE ieee.std_logic_unsigned.all;
 USE ieee.numeric_std.all;
 
 ENTITY ROBOT IS
@@ -21,7 +19,7 @@ PORT (
 	DRAM_BA : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
 	DRAM_CS_N, DRAM_CAS_N, DRAM_RAS_N, DRAM_WE_N : OUT STD_LOGIC;
 	DRAM_DQ : INOUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-	DRAM_DQM : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+	DRAM_DQM : OUT STD_LOGIC_VECTOR(1 DOWNTO 0); 
 	-- Motor Driver DRV8848 interface
 	MTRR_P, MTRR_N : OUT STD_LOGIC;
 	MTRL_P, MTRL_N : OUT STD_LOGIC;
@@ -44,7 +42,7 @@ PORT (
 	clk_clk : IN STD_LOGIC;
 	reset_reset_n : IN STD_LOGIC;
 	sdram_clk_clk : OUT STD_LOGIC;
-	leds_export : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	--leds_export : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 	switches_export : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
 	sdram_wire_addr : OUT STD_LOGIC_VECTOR(12 DOWNTO 0);
 	sdram_wire_ba : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
@@ -112,12 +110,35 @@ PORT (
 	line_lost   : OUT STD_LOGIC );
 END COMPONENT;
 
+COMPONENT ctl_sl
+PORT (
+	clk : IN STD_LOGIC;
+	reset_n : IN STD_LOGIC;
+	position_in : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+	ready : IN STD_LOGIC;
+	correction : OUT STD_LOGIC_VECTOR(13 DOWNTO 0) );
+END COMPONENT;
+
+COMPONENT MUX
+PORT (
+	clk : IN STD_LOGIC;
+	reset_n : IN STD_LOGIC;
+	motor_right_in : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
+	motor_left_in : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
+	correction_in : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
+	ready : IN STD_LOGIC;
+	motor_right_out : OUT STD_LOGIC_VECTOR(13 DOWNTO 0);
+	motor_left_out : OUT STD_LOGIC_VECTOR(13 DOWNTO 0) );
+END COMPONENT;
+
 -- Fault signal (not used in this version, just monitored)
 signal motor_fault : STD_LOGIC;
 
 -- Internal signals for motor control
 signal motor_right_data : STD_LOGIC_VECTOR(13 DOWNTO 0);
 signal motor_left_data : STD_LOGIC_VECTOR(13 DOWNTO 0);
+signal motor_right_corrected : STD_LOGIC_VECTOR(13 DOWNTO 0);
+signal motor_left_corrected : STD_LOGIC_VECTOR(13 DOWNTO 0);
 
 -- Internal signals for ground sensors
 signal sensor_control_sig : STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -136,6 +157,9 @@ signal data6_sig : STD_LOGIC_VECTOR(7 DOWNTO 0);
 signal position_sig : STD_LOGIC_VECTOR(3 DOWNTO 0);
 signal line_lost_sig : STD_LOGIC;
 
+-- Signals from ctl_sl (PID controller)
+signal correction_sig : STD_LOGIC_VECTOR(13 DOWNTO 0);
+
 -- Clock divider for 2 KHz data_capture signal
 -- 50 MHz / 2 KHz = 25000
 signal clk_div_counter : INTEGER range 0 to 24999 := 0;
@@ -148,7 +172,7 @@ PORT MAP (
 	clk_clk => CLOCK_50,
 	reset_reset_n => KEY(0),
 	sdram_clk_clk => DRAM_CLK,
-	leds_export => LED,
+	--leds_export => LED,
 	switches_export => SW,
 	sdram_wire_addr => DRAM_ADDR,
 	sdram_wire_ba => DRAM_BA,
@@ -230,13 +254,34 @@ PORT MAP (
 	line_lost => line_lost_sig );
 
 
+-- Instantiate PID controller for line following
+PID_Controller: ctl_sl
+PORT MAP (
+	clk => CLOCK_50,
+	reset_n => KEY(0),
+	position_in => position_sig,
+	ready => data_ready_sig,
+	correction => correction_sig );
+
+-- Instantiate MUX module (apply PID to motor speeds)
+Mux_Inst: MUX
+PORT MAP (
+	clk => CLOCK_50,
+	reset_n => KEY(0),
+	motor_right_in => motor_right_data,
+	motor_left_in => motor_left_data,
+	correction_in => correction_sig,
+	ready => data_ready_sig,
+	motor_right_out => motor_right_corrected,
+	motor_left_out => motor_left_corrected );
+
 -- Instantiate PWM generation for motor control
 PWM_Motors: PWM_generation
 PORT MAP (
 	clk => CLOCK_50,
 	reset_n => KEY(0),
-	s_writedataR => motor_right_data,
-	s_writedataL => motor_left_data,
+	s_writedataR => motor_right_corrected,
+	s_writedataL => motor_left_corrected,
 	dc_motor_p_R => MTRR_P,
 	dc_motor_n_R => MTRR_N,
 	dc_motor_p_L => MTRL_P,
