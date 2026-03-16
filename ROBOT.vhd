@@ -64,7 +64,8 @@ PORT (
 	sensor_data3_export : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
 	sensor_data4_export : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
 	sensor_data5_export : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-	sensor_data6_export : IN STD_LOGIC_VECTOR(7 DOWNTO 0) );
+	sensor_data6_export : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+	kp_export : OUT STD_LOGIC_VECTOR(11 DOWNTO 0) );
 END COMPONENT;
 
 COMPONENT capteurs_sol
@@ -116,7 +117,8 @@ PORT (
 	reset_n : IN STD_LOGIC;
 	position_in : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
 	ready : IN STD_LOGIC;
-	correction : OUT STD_LOGIC_VECTOR(13 DOWNTO 0) );
+	correction : OUT STD_LOGIC_VECTOR(13 DOWNTO 0);
+	kp_in : IN STD_LOGIC_VECTOR(11 DOWNTO 0) );
 END COMPONENT;
 
 COMPONENT MUX
@@ -156,6 +158,7 @@ signal line_lost_sig : STD_LOGIC;
 
 -- Signals from ctl_sl (PID controller)
 signal correction_sig : STD_LOGIC_VECTOR(13 DOWNTO 0);
+signal kp_sig : STD_LOGIC_VECTOR(11 DOWNTO 0);
 
 -- Clock divider for 2 KHz data_capture signal
 -- 50 MHz / 2 KHz = 25000
@@ -193,7 +196,8 @@ PORT MAP (
 	sensor_data3_export => data3_sig,
 	sensor_data4_export => data4_sig,
 	sensor_data5_export => data5_sig,
-	sensor_data6_export => data6_sig );
+	sensor_data6_export => data6_sig,
+	kp_export => kp_sig );
 
 -- Extract control and status signals
 sensor_status_sig <= "0000000" & data_ready_sig;
@@ -260,7 +264,8 @@ PORT MAP (
 	reset_n => KEY(0),
 	position_in => position_sig,
 	ready => data_ready_sig,
-	correction => correction_sig );
+	correction => correction_sig,
+	kp_in => kp_sig );
 
 -- Instantiate MUX module (apply PID to motor speeds)
 Mux_Inst: MUX

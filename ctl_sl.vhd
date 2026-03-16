@@ -25,15 +25,17 @@ entity ctl_sl is
         -- Output correction for motors
         -- Positive = turn right (reduce left motor speed / increase right motor speed)
         -- Negative = turn left  (reduce right motor speed / increase left motor speed)
-        correction  : out std_logic_vector(13 downto 0)  -- Signed correction value
+        correction  : out std_logic_vector(13 downto 0); -- Signed correction value
+
+        -- KP from Nios (12-bit signed)
+        kp_in       : in  std_logic_vector(11 downto 0)
     );
 end ctl_sl;
 
 architecture rtl of ctl_sl is
     
-    constant KP : integer := 500;
-    
     signal position_signed : signed(3 downto 0);
+    signal kp_signed : signed(11 downto 0);
     signal correction_temp : signed(13 downto 0);
     signal correction_out  : signed(13 downto 0);
     
@@ -41,11 +43,10 @@ begin
     
     -- Convert input to signed
     position_signed <= signed(position_in);
+    kp_signed <= signed(kp_in);
     
     -- P-only calculation: correction = KP * position
-    -- Since KP = 500 and position is -3 to +3:
-    -- max output = 500 * 3 = 1500 (fits in 14-bit signed: -8192 to +8191)
-    correction_temp <= resize(position_signed * KP, 14);
+    correction_temp <= resize(position_signed * kp_signed, 14);
     
     -- Register the output
     process(clk, reset_n)

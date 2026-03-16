@@ -17,6 +17,7 @@
 #define LEDS_BASE         0x00002010
 #define MOTOR_RIGHT_BASE  0x00001010
 #define MOTOR_LEFT_BASE   0x00001000
+#define KP_BASE           0x000010B0
 
 /* Capteurs de sol */
 #define SENSOR_DATA0      0x00001040
@@ -250,6 +251,9 @@ int main(void) {
     
     printf("=== Line Follower Robot ===\n");
     printf("Appuyez sur un switch pour demarrer\n");
+
+    /* Configure KP from software (12-bit signed) */
+    IOWR(KP_BASE, (unsigned int)(KP & 0x0FFF));
     
     /* LED clignotement initial */
     IOWR(LEDS_BASE, 0xFF);

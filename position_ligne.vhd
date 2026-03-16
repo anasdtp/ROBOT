@@ -90,13 +90,13 @@ begin
     begin
         -- Calcul de la somme pondérée
         temp_sum := to_signed(0, 6);
-        if detect0 = '1' then temp_sum := temp_sum + to_signed(-3, 6); end if;
-        if detect1 = '1' then temp_sum := temp_sum + to_signed(-2, 6); end if;
-        if detect2 = '1' then temp_sum := temp_sum + to_signed(-1, 6); end if;
+        if detect0 = '1' then temp_sum := temp_sum + to_signed( 3, 6); end if;
+        if detect1 = '1' then temp_sum := temp_sum + to_signed( 2, 6); end if;
+        if detect2 = '1' then temp_sum := temp_sum + to_signed( 1, 6); end if;
         if detect3 = '1' then temp_sum := temp_sum + to_signed( 0, 6); end if;
-        if detect4 = '1' then temp_sum := temp_sum + to_signed( 1, 6); end if;
-        if detect5 = '1' then temp_sum := temp_sum + to_signed( 2, 6); end if;
-        if detect6 = '1' then temp_sum := temp_sum + to_signed( 3, 6); end if;
+        if detect4 = '1' then temp_sum := temp_sum + to_signed(-1, 6); end if;
+        if detect5 = '1' then temp_sum := temp_sum + to_signed(-2, 6); end if;
+        if detect6 = '1' then temp_sum := temp_sum + to_signed(-3, 6); end if;
         
         weighted_sum <= temp_sum;
     end process;
