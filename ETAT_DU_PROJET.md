@@ -114,13 +114,6 @@ Sortie :
    - Ajuster les vitesses des moteurs pour une trajectoire rectiligne
    - Documenter les déltas entre moteur droit/gauche
 
-**Procédure :**
-```bash
-# Compiler le programme de test
-nios2-build -b BSP motor_characterization.c
-
-# Télécharger sur le FPGA et utiliser les switchs selon la doc
-```
 
 **Résultats attendus :**
 ```
@@ -364,7 +357,7 @@ int main() {
 | 1 | Architecture NIOS-SDRAM-PIO | ✅ Complet | 100% |
 | 2 | Caractérisation moteurs | ⏳ Tests à faire | 40% |
 | 3 | Calcul position robot | ✅ Complet | 100% |
-| 4 | Suivi de ligne | ⚠️ PID manquant | 60% |
+| 4 | Suivi de ligne | ⚠️ | 60% |
 | 5 | Gestion rotation | ❌ À faire | 0% |
 | 6 | Aller-retours | ❌ À faire | 0% |
 | **TOTAL** | | | **50%** |

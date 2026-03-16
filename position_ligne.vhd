@@ -32,6 +32,10 @@ end position_ligne;
 
 architecture rtl of position_ligne is
     
+    -- THRESHOLD: Ajuster selon vos capteurs
+    -- Noir (ligne) = valeur HAUTE > THRESHOLD
+    -- Blanc (pas ligne) = valeur BASSE < THRESHOLD
+    -- Valeur seuil calibrée: 110 (match avec line_follower.c)
     constant THRESHOLD : unsigned(7 downto 0) := to_unsigned(110, 8);
     
     -- Signaux internes pour détection noir
@@ -49,7 +53,8 @@ architecture rtl of position_ligne is
 begin
     
     --==============================================================
-    -- Étape 1: Comparaison capteur vs seuil (constant 110)
+    -- Étape 1: Détection ligne noire (valeur HAUTE = noir)
+    -- Match avec logique du C: sensor_value > THRESHOLD = 110
     --==============================================================
     detect0 <= '1' when unsigned(sensor0) > THRESHOLD else '0';
     detect1 <= '1' when unsigned(sensor1) > THRESHOLD else '0';
@@ -62,15 +67,19 @@ begin
     --==============================================================
     -- Étape 2: Compte le nombre de capteurs noirs (0-7)
     --==============================================================
-    num_black <= unsigned'(
-        (detect0 & "00") +
-        (detect1 & "00") +
-        (detect2 & "00") +
-        (detect3 & "00") +
-        (detect4 & "00") +
-        (detect5 & "00") +
-        (detect6 & "00")
-    );
+    process(detect0, detect1, detect2, detect3, detect4, detect5, detect6)
+        variable cnt : integer range 0 to 7;
+    begin
+        cnt := 0;
+        if detect0 = '1' then cnt := cnt + 1; end if;
+        if detect1 = '1' then cnt := cnt + 1; end if;
+        if detect2 = '1' then cnt := cnt + 1; end if;
+        if detect3 = '1' then cnt := cnt + 1; end if;
+        if detect4 = '1' then cnt := cnt + 1; end if;
+        if detect5 = '1' then cnt := cnt + 1; end if;
+        if detect6 = '1' then cnt := cnt + 1; end if;
+        num_black <= to_unsigned(cnt, 3);
+    end process;
     
     --==============================================================
     -- Étape 3 & 4: Calcul de la somme pondérée et division
@@ -93,40 +102,45 @@ begin
     end process;
     
     --==============================================================
-    -- Division rapide par approx (shift)
-    -- num_black = nombre de capteurs noirs détectés
-    -- Approximation rapide sans division complète
+    -- Division avec shifts (plus stable en synthèse que divisions entières)
     --==============================================================
     process(weighted_sum, num_black)
+        variable temp_pos : signed(3 downto 0);
     begin
-        if num_black = 0 then
-            pos_final <= to_signed(0, 4);  -- Fallback: pas de ligne détectée
+        line_lost_sig <= '0';
+        if num_black = "000" then
+            temp_pos := to_signed(0, 4);
             line_lost_sig <= '1';
-        elsif num_black = 1 then
-            pos_final <= weighted_sum(3 downto 0);  -- weighted_sum / 1
-        elsif num_black = 2 then
-            pos_final <= weighted_sum(4 downto 1);  -- weighted_sum / 2 (shift >> 1)
-        elsif num_black = 3 then
-            -- Approximation: (weighted_sum * 21) >> 6 ≈ weighted_sum / 3
-            -- Simplifié: shift >> 2 puis ajustement
-            pos_final <= weighted_sum(4 downto 1);  -- Approximation simple
-        elsif num_black = 4 then
-            pos_final <= weighted_sum(4 downto 1);  -- weighted_sum / 4 (shift >> 2)
-        elsif num_black = 5 then
-            -- Approximation weighted_sum / 5
-            pos_final <= weighted_sum(4 downto 1);  -- Approximation
-        elsif num_black = 6 then
-            -- Approximation weighted_sum / 6
-            pos_final <= weighted_sum(4 downto 1);  -- Approximation
+        elsif num_black = "001" then
+            -- /1
+            temp_pos := resize(weighted_sum, 4);
+        elsif num_black = "010" then
+            -- /2
+            temp_pos := resize(shift_right(weighted_sum, 1), 4);
+        elsif num_black = "011" then
+            -- /3 ≈ /2 (approximation)
+            temp_pos := resize(shift_right(weighted_sum, 1), 4);
+        elsif num_black = "100" then
+            -- /4
+            temp_pos := resize(shift_right(weighted_sum, 2), 4);
+        elsif num_black = "101" then
+            -- /5 ≈ /4 (approximation)
+            temp_pos := resize(shift_right(weighted_sum, 2), 4);
+        elsif num_black = "110" then
+            -- /6 ≈ /4 (approximation)
+            temp_pos := resize(shift_right(weighted_sum, 2), 4);
         else  -- num_black = 7
-            pos_final <= weighted_sum(4 downto 1);  -- weighted_sum / 7 (shift >> 2)
+            -- /7 ≈ /4 (approximation)
+            temp_pos := resize(shift_right(weighted_sum, 2), 4);
         end if;
         
-        -- Si au moins 1 capteur noir, ligne détectée
-        if num_black = 0 then
-            line_lost_sig <= '1';
+        -- Saturation: forcer la position entre -3 et +3
+        if temp_pos > to_signed(3, 4) then
+            pos_final <= to_signed(3, 4);
+        elsif temp_pos < to_signed(-3, 4) then
+            pos_final <= to_signed(-3, 4);
         else
-            line_lost_sig <= '0';
+            pos_final <= temp_pos;
         end if;
     end process;
     

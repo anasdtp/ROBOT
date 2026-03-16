@@ -31,7 +31,6 @@ END MUX;
 
 ARCHITECTURE rtl OF MUX IS
 
-signal base_speed_sig : signed(13 downto 0);
 signal correction_signed : signed(13 downto 0);
 signal motor_right_signed : signed(13 downto 0);
 signal motor_left_signed : signed(13 downto 0);
@@ -40,7 +39,6 @@ signal left_corrected : signed(13 downto 0);
 
 BEGIN
 
-base_speed_sig <= to_signed(BASE_SPEED, 14);
 correction_signed <= signed(correction_in);
 motor_right_signed <= signed(motor_right_in);
 motor_left_signed <= signed(motor_left_in);

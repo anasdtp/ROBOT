@@ -6,15 +6,25 @@
         <system_jdi filepath="true"/>
         <cable>USB-Blaster [USB-0]</cable>
         <processor JTAGHubInstanceID="0">nios2_qsys_0</processor>
+        <elf_section name="text">
+            <memory_device>sdram/s1</memory_device>
+            <memory_start_offset>0</memory_start_offset>
+        </elf_section>
+        <elf_section name="data">
+            <memory_device>sdram/s1</memory_device>
+            <memory_start_offset>0</memory_start_offset>
+        </elf_section>
         <terminal JTAGHubInstanceID="0">jtag_uart_0</terminal>
     </system>
     <program>
-        <type>BSP</type>
+        <type>C</type>
         <options>
             <source_files>
-                <source_file filepath="true">app_sofware\line_follower.c</source_file>
+                <source_file filepath="true">app_sofware\sensors.c</source_file>
             </source_files>
-            <bsp_settings_tcl_script filepath="true"/>
+            <compiler_flags>-g -O1 -ffunction-sections -fverbose-asm -fno-inline</compiler_flags>
+            <emulate_unimpl_instructions>true</emulate_unimpl_instructions>
+            <use_small_c_library>false</use_small_c_library>
         </options>
     </program>
 </nios2_config>

@@ -2,9 +2,9 @@
  * linker.x - Linker script
  *
  * Machine generated for CPU 'nios2_qsys_0' in SOPC Builder design 'nios_system_sdram'
- * SOPC Builder design path: C:/Users/fchiha/Documents/Altera/ROBOT/nios_system_sdram.sopcinfo
+ * SOPC Builder design path: C:/Users/mdaggag/Documents/Quartus/ROBOT/nios_system_sdram.sopcinfo
  *
- * Generated: Fri Mar 13 08:58:06 CET 2026
+ * Generated: Mon Mar 16 09:24:55 CET 2026
  */
 
 /*

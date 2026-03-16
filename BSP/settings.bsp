@@ -2,11 +2,11 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>13 mars 2026 08:58:04</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1773388684565</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>C:\Users\fchiha\Documents\Altera\ROBOT\BSP</BspGeneratedLocation>
-        <BspSettingsFile>C:\Users\fchiha\Documents\Altera\ROBOT\BSP\settings.bsp</BspSettingsFile>
-        <SopcDesignFile>C:\Users\fchiha\Documents\Altera\ROBOT\nios_system_sdram.sopcinfo</SopcDesignFile>
+        <BspGeneratedTimeStamp>16 mars 2026 09:40:25</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1773650425055</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>C:\Users\mdaggag\Documents\Quartus\ROBOT\BSP</BspGeneratedLocation>
+        <BspSettingsFile>C:\Users\mdaggag\Documents\Quartus\ROBOT\BSP\settings.bsp</BspSettingsFile>
+        <SopcDesignFile>C:\Users\mdaggag\Documents\Quartus\ROBOT\nios_system_sdram.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>nios2_qsys_0</Cpu>
         <SchemaVersion>1.9</SchemaVersion>

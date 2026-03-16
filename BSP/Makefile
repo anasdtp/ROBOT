@@ -103,7 +103,7 @@ ACDS_VERSION := 13.0sp1
 # BUILD_NUMBER: 232
 
 SETTINGS_FILE := settings.bsp
-SOPC_FILE := C:/Users/fchiha/Documents/Altera/ROBOT/nios_system_sdram.sopcinfo
+SOPC_FILE := C:/Users/mdaggag/Documents/Quartus/ROBOT/nios_system_sdram.sopcinfo
 
 #-------------------------------------------------------------------------------
 #                             TOOL & COMMAND DEFINITIONS

@@ -1,6 +1,6 @@
 
-C:/Users/fchiha/Documents/Altera/ROBOT/line_follower.elf:     file format elf32-littlenios2
-C:/Users/fchiha/Documents/Altera/ROBOT/line_follower.elf
+C:/Users/mdaggag/Documents/Quartus/ROBOT/line_follower.elf:     file format elf32-littlenios2
+C:/Users/mdaggag/Documents/Quartus/ROBOT/line_follower.elf
 architecture: nios2, flags 0x00000112:
 EXEC_P, HAS_SYMS, D_PAGED
 start address 0x04000168
@@ -35,39 +35,39 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   8 .debug_pubnames 000010ce  00000000  00000000  00009998  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_info   0001949c  00000000  00000000  0000aa66  2**0
+  9 .debug_info   000194a2  00000000  00000000  0000aa66  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_abbrev 00006c32  00000000  00000000  00023f02  2**0
+ 10 .debug_abbrev 00006c32  00000000  00000000  00023f08  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_line   0000e4dd  00000000  00000000  0002ab34  2**0
+ 11 .debug_line   0000e4df  00000000  00000000  0002ab3a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_frame  000011cc  00000000  00000000  00039014  2**2
+ 12 .debug_frame  000011cc  00000000  00000000  0003901c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_str    0000245f  00000000  00000000  0003a1e0  2**0
+ 13 .debug_str    0000248e  00000000  00000000  0003a1e8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_loc    00005fa0  00000000  00000000  0003c63f  2**0
+ 14 .debug_loc    00005fa0  00000000  00000000  0003c676  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_alt_sim_info 00000010  00000000  00000000  000425e0  2**2
+ 15 .debug_alt_sim_info 00000010  00000000  00000000  00042618  2**2
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_ranges 00000638  00000000  00000000  000425f0  2**3
+ 16 .debug_ranges 00000638  00000000  00000000  00042628  2**3
                   CONTENTS, READONLY, DEBUGGING
- 17 .thread_model 00000003  00000000  00000000  00045385  2**0
+ 17 .thread_model 00000003  00000000  00000000  000453bd  2**0
                   CONTENTS, READONLY
- 18 .cpu          0000000c  00000000  00000000  00045388  2**0
+ 18 .cpu          0000000c  00000000  00000000  000453c0  2**0
                   CONTENTS, READONLY
- 19 .qsys         00000001  00000000  00000000  00045394  2**0
+ 19 .qsys         00000001  00000000  00000000  000453cc  2**0
                   CONTENTS, READONLY
- 20 .simulation_enabled 00000001  00000000  00000000  00045395  2**0
+ 20 .simulation_enabled 00000001  00000000  00000000  000453cd  2**0
                   CONTENTS, READONLY
- 21 .stderr_dev   0000000b  00000000  00000000  00045396  2**0
+ 21 .stderr_dev   0000000b  00000000  00000000  000453ce  2**0
                   CONTENTS, READONLY
- 22 .stdin_dev    0000000b  00000000  00000000  000453a1  2**0
+ 22 .stdin_dev    0000000b  00000000  00000000  000453d9  2**0
                   CONTENTS, READONLY
- 23 .stdout_dev   0000000b  00000000  00000000  000453ac  2**0
+ 23 .stdout_dev   0000000b  00000000  00000000  000453e4  2**0
                   CONTENTS, READONLY
- 24 .sopc_system_name 00000011  00000000  00000000  000453b7  2**0
+ 24 .sopc_system_name 00000011  00000000  00000000  000453ef  2**0
                   CONTENTS, READONLY
- 25 .sopcinfo     00081763  00000000  00000000  000453c8  2**0
+ 25 .sopcinfo     0007d08a  00000000  00000000  00045400  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 04000000 l    d  .entry	00000000 .entry
@@ -947,7 +947,7 @@ int calculate_pid(float error) {
     prev_error = error;
  40003c4:	d466a915 	stw	r17,-25948(gp)
  40003c8:	8809883a 	mov	r4,r17
- 40003cc:	01511eb4 	movhi	r5,17530
+ 40003cc:	01511874 	movhi	r5,17505
  40003d0:	40009f00 	call	40009f0 <__mulsf3>
  40003d4:	1009883a 	mov	r4,r2
  40003d8:	4000dec0 	call	4000dec <__extendsfdf2>
@@ -1150,7 +1150,7 @@ void line_follow(void) {
     
     /* Envoyer aux moteurs */
     set_motors(right_speed, left_speed);
- 40005c8:	01407d04 	movi	r5,500
+ 40005c8:	01407084 	movi	r5,450
  40005cc:	1149883a 	add	r4,r2,r5
  40005d0:	288bc83a 	sub	r5,r5,r2
  40005d4:	400048c0 	call	400048c <set_motors>
@@ -6112,131 +6112,52 @@ int ALT_ISATTY (int file)
  4004d78:	f800283a 	ret
 
 04004d7c <alt_load>:
- * there is no bootloader, so this application is responsible for loading to
- * RAM any sections that are required.
- */  
-
-void alt_load (void)
-{
  4004d7c:	deffff04 	addi	sp,sp,-4
  4004d80:	dfc00015 	stw	ra,0(sp)
-  /* 
-   * Copy the .rwdata section. 
-   */
-
-  alt_load_section (&__flash_rwdata_start, 
  4004d84:	01010034 	movhi	r4,1024
  4004d88:	211fa604 	addi	r4,r4,32408
  4004d8c:	00c10034 	movhi	r3,1024
  4004d90:	18d90d04 	addi	r3,r3,25652
-
-static void ALT_INLINE alt_load_section (alt_u32* from, 
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
-  if (to != from)
  4004d94:	20c00926 	beq	r4,r3,4004dbc <alt_load+0x40>
  4004d98:	01810034 	movhi	r6,1024
  4004d9c:	319fa604 	addi	r6,r6,32408
-  {
-    while( to != end )
  4004da0:	19800626 	beq	r3,r6,4004dbc <alt_load+0x40>
  4004da4:	01400104 	movi	r5,4
-    {
-      *to++ = *from++;
  4004da8:	20800017 	ldw	r2,0(r4)
  4004dac:	18800015 	stw	r2,0(r3)
  4004db0:	1947883a 	add	r3,r3,r5
  4004db4:	2149883a 	add	r4,r4,r5
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
-  if (to != from)
-  {
-    while( to != end )
  4004db8:	30fffb1e 	bne	r6,r3,4004da8 <alt_load+0x2c>
-
-  /*
-   * Copy the exception handler.
-   */
-
-  alt_load_section (&__flash_exceptions_start, 
  4004dbc:	01010034 	movhi	r4,1024
  4004dc0:	21000804 	addi	r4,r4,32
  4004dc4:	00c10034 	movhi	r3,1024
  4004dc8:	18c00804 	addi	r3,r3,32
-
-static void ALT_INLINE alt_load_section (alt_u32* from, 
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
-  if (to != from)
  4004dcc:	20c00926 	beq	r4,r3,4004df4 <alt_load+0x78>
  4004dd0:	01810034 	movhi	r6,1024
  4004dd4:	31805a04 	addi	r6,r6,360
-  {
-    while( to != end )
  4004dd8:	19800626 	beq	r3,r6,4004df4 <alt_load+0x78>
  4004ddc:	01400104 	movi	r5,4
-    {
-      *to++ = *from++;
  4004de0:	20800017 	ldw	r2,0(r4)
  4004de4:	18800015 	stw	r2,0(r3)
  4004de8:	1947883a 	add	r3,r3,r5
  4004dec:	2149883a 	add	r4,r4,r5
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
-  if (to != from)
-  {
-    while( to != end )
  4004df0:	30fffb1e 	bne	r6,r3,4004de0 <alt_load+0x64>
-
-  /*
-   * Copy the .rodata section.
-   */
-
-  alt_load_section (&__flash_rodata_start, 
  4004df4:	01010034 	movhi	r4,1024
  4004df8:	2118aa04 	addi	r4,r4,25256
  4004dfc:	00c10034 	movhi	r3,1024
  4004e00:	18d8aa04 	addi	r3,r3,25256
-
-static void ALT_INLINE alt_load_section (alt_u32* from, 
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
-  if (to != from)
  4004e04:	20c00926 	beq	r4,r3,4004e2c <alt_load+0xb0>
  4004e08:	01810034 	movhi	r6,1024
  4004e0c:	31990d04 	addi	r6,r6,25652
-  {
-    while( to != end )
  4004e10:	19800626 	beq	r3,r6,4004e2c <alt_load+0xb0>
  4004e14:	01400104 	movi	r5,4
-    {
-      *to++ = *from++;
  4004e18:	20800017 	ldw	r2,0(r4)
  4004e1c:	18800015 	stw	r2,0(r3)
  4004e20:	1947883a 	add	r3,r3,r5
  4004e24:	2149883a 	add	r4,r4,r5
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
-  if (to != from)
-  {
-    while( to != end )
  4004e28:	30fffb1e 	bne	r6,r3,4004e18 <alt_load+0x9c>
-  
-  /*
-   * Now ensure that the caches are in synch.
-   */
-  
-  alt_dcache_flush_all();
  4004e2c:	40059500 	call	4005950 <alt_dcache_flush_all>
-  alt_icache_flush_all();
  4004e30:	40059c40 	call	40059c4 <alt_icache_flush_all>
-}
  4004e34:	dfc00017 	ldw	ra,0(sp)
  4004e38:	dec00104 	addi	sp,sp,4
  4004e3c:	f800283a 	ret
@@ -6378,21 +6299,9 @@ void alt_main (void)
  4004f40:	40060300 	call	4006030 <exit>
 
 04004f44 <__malloc_lock>:
- * this requires that malloc is never called by an interrupt service routine.
- */
-
-void __malloc_lock ( struct _reent *_r )
-{
-}
  4004f44:	f800283a 	ret
 
 04004f48 <__malloc_unlock>:
- *
- */
-
-void __malloc_unlock ( struct _reent *_r )
-{
-}
  4004f48:	f800283a 	ret
 
 04004f4c <read>:
@@ -7779,19 +7688,8 @@ static ALT_INLINE void ALT_ALWAYS_INLINE alt_llist_insert(alt_llist* list,
  4005950:	f800283a 	ret
 
 04005954 <alt_dev_llist_insert>:
-/*
- *
- */
-
-int alt_dev_llist_insert (alt_dev_llist* dev, alt_llist* list)
-{
  4005954:	deffff04 	addi	sp,sp,-4
  4005958:	dfc00015 	stw	ra,0(sp)
-  /*
-   * check that the device exists, and that it has a valid name.
-   */
-
-  if (!dev || !dev->name)
  400595c:	20000226 	beq	r4,zero,4005968 <alt_dev_llist_insert+0x14>
  4005960:	20800217 	ldw	r2,8(r4)
  4005964:	10000d1e 	bne	r2,zero,400599c <alt_dev_llist_insert+0x48>
@@ -7804,35 +7702,17 @@ int alt_dev_llist_insert (alt_dev_llist* dev, alt_llist* list)
  4005980:	00000206 	br	400598c <alt_dev_llist_insert+0x38>
  4005984:	103ee83a 	callr	r2
  4005988:	1007883a 	mov	r3,r2
-  {
-    ALT_ERRNO = EINVAL;
  400598c:	00800584 	movi	r2,22
  4005990:	18800015 	stw	r2,0(r3)
  4005994:	00bffa84 	movi	r2,-22
  4005998:	00000706 	br	40059b8 <alt_dev_llist_insert+0x64>
- */
-
-static ALT_INLINE void ALT_ALWAYS_INLINE alt_llist_insert(alt_llist* list, 
-                alt_llist* entry)
-{
-  entry->previous = list;
  400599c:	21400115 	stw	r5,4(r4)
-  entry->next     = list->next;
  40059a0:	28800017 	ldw	r2,0(r5)
  40059a4:	20800015 	stw	r2,0(r4)
-
-  list->next->previous = entry;
  40059a8:	28800017 	ldw	r2,0(r5)
  40059ac:	11000115 	stw	r4,4(r2)
-  list->next           = entry;
  40059b0:	29000015 	stw	r4,0(r5)
  40059b4:	0005883a 	mov	r2,zero
-   */
-  
-  alt_llist_insert(list, &dev->llist);
-
-  return 0;  
-}
  40059b8:	dfc00017 	ldw	ra,0(sp)
  40059bc:	dec00104 	addi	sp,sp,4
  40059c0:	f800283a 	ret

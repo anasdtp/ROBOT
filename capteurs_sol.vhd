@@ -97,7 +97,7 @@ architecture RTL of capteurs_sol is
 
 	--////////////////////////
 	-- receive data from SDO
-	signal rx_data_bit_index	: std_logic_vector(3 downto 0);
+	-- rx_data_bit_index reserved for diagnostic use
 
 begin
 
@@ -207,13 +207,13 @@ begin
 			channel_config	<= "101110";
 		when "0111" =>
 			channel_config	<= "111110";
-		when Others => Null;
+		when Others =>
+			channel_config	<= "100010";  -- Default to channel 0 configuration
 		end case;
 	end process;
 
-	
-	
-	rx_data_bit_index	<= std_logic_vector(12 - unsigned(data_bit_index));	-- data valid when data_bit_index = 1~12
+	-- data receive bit index - reserved for diagnostic/debug purposes
+	-- rx_data_bit_index <= std_logic_vector(12 - unsigned(data_bit_index));
 
 	-- read data at posedge of ADC_SCK
 	ADC_SCK <= ADC_SCKl;
