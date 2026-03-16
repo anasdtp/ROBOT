@@ -8,7 +8,7 @@
 
 #define IOWR(base, data) (*((volatile unsigned int*)(base)) = data)
 
-#define KP 900
+#define KP 500
 
 int main(void) {
     printf("=== Superviseur ===\n");

@@ -1,12 +1,12 @@
-Fitter Status : Successful - Mon Mar 16 10:58:45 2026
+Fitter Status : Successful - Mon Mar 16 11:08:45 2026
 Quartus II 32-bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
 Revision Name : ROBOT
 Top-level Entity Name : ROBOT
 Family : Cyclone IV E
 Device : EP4CE22F17C6
 Timing Models : Final
-Total logic elements : 3,253 / 22,320 ( 15 % )
-    Total combinational functions : 2,863 / 22,320 ( 13 % )
+Total logic elements : 3,242 / 22,320 ( 15 % )
+    Total combinational functions : 2,853 / 22,320 ( 13 % )
     Dedicated logic registers : 1,993 / 22,320 ( 9 % )
 Total registers : 2062
 Total pins : 69 / 154 ( 45 % )

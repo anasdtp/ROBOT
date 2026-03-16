@@ -139,10 +139,10 @@ ACDS_VERSION := 13.0sp1
 # Define path to the application ELF. 
 # It may be used by the makefile fragments so is defined before including them. 
 # 
-ELF := C:/Users/mdaggag/Documents/Quartus/ROBOT/line_follower.elf
+ELF := C:/Users/mdaggag/Documents/Quartus/ROBOT/superviseur.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += C:/Users/mdaggag/Documents/Quartus/ROBOT/app_sofware/line_follower.c
+C_SRCS += C:/Users/mdaggag/Documents/Quartus/ROBOT/app_sofware/superviseur.c
 CXX_SRCS :=
 ASM_SRCS :=
 

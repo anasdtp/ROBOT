@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_qsys_0' in SOPC Builder design 'nios_system_sdram'
  * SOPC Builder design path: C:/Users/mdaggag/Documents/Quartus/ROBOT/nios_system_sdram.sopcinfo
  *
- * Generated: Mon Mar 16 09:24:55 CET 2026
+ * Generated: Mon Mar 16 11:12:04 CET 2026
  */
 
 /*
@@ -219,6 +219,33 @@
 #define JTAG_UART_0_TYPE "altera_avalon_jtag_uart"
 #define JTAG_UART_0_WRITE_DEPTH 64
 #define JTAG_UART_0_WRITE_THRESHOLD 8
+
+
+/*
+ * kp configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_kp altera_avalon_pio
+#define KP_BASE 0x10b0
+#define KP_BIT_CLEARING_EDGE_REGISTER 0
+#define KP_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define KP_CAPTURE 0
+#define KP_DATA_WIDTH 12
+#define KP_DO_TEST_BENCH_WIRING 0
+#define KP_DRIVEN_SIM_VALUE 0
+#define KP_EDGE_TYPE "NONE"
+#define KP_FREQ 50000000
+#define KP_HAS_IN 0
+#define KP_HAS_OUT 1
+#define KP_HAS_TRI 0
+#define KP_IRQ -1
+#define KP_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define KP_IRQ_TYPE "NONE"
+#define KP_NAME "/dev/kp"
+#define KP_RESET_VALUE 1000
+#define KP_SPAN 16
+#define KP_TYPE "altera_avalon_pio"
 
 
 /*

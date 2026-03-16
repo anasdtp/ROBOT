@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>16 mars 2026 09:40:25</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1773650425055</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>16 mars 2026 11:12:03</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1773655923087</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\mdaggag\Documents\Quartus\ROBOT\BSP</BspGeneratedLocation>
         <BspSettingsFile>C:\Users\mdaggag\Documents\Quartus\ROBOT\BSP\settings.bsp</BspSettingsFile>
         <SopcDesignFile>C:\Users\mdaggag\Documents\Quartus\ROBOT\nios_system_sdram.sopcinfo</SopcDesignFile>
@@ -931,6 +931,12 @@
         <MemoryMap>
                 <slaveDescriptor>sensor_data6</slaveDescriptor>
                 <addressRange>0x000010A0 - 0x000010AF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>kp</slaveDescriptor>
+                <addressRange>0x000010B0 - 0x000010BF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
