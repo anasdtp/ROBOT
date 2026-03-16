@@ -31,7 +31,10 @@ entity ctl_sl is
         fin_sl      : out std_logic;
 
         -- KP from Nios (12-bit signed)
-        kp_in       : in  std_logic_vector(11 downto 0)
+        kp_in       : in  std_logic_vector(11 downto 0);
+
+        -- KD from Nios (12-bit signed)
+        kd_in       : in  std_logic_vector(11 downto 0)
     );
 end ctl_sl;
 
@@ -39,6 +42,11 @@ architecture rtl of ctl_sl is
     
     signal position_signed : signed(3 downto 0);
     signal kp_signed : signed(11 downto 0);
+    signal kd_signed : signed(11 downto 0);
+    signal prev_position : signed(3 downto 0);
+    signal deriv_signed : signed(4 downto 0);
+    signal p_term : signed(15 downto 0);
+    signal d_term : signed(15 downto 0);
     signal correction_temp : signed(13 downto 0);
     signal correction_out  : signed(13 downto 0);
     
@@ -47,9 +55,14 @@ begin
     -- Convert input to signed
     position_signed <= signed(position_in);
     kp_signed <= signed(kp_in);
+    kd_signed <= signed(kd_in);
+
+    deriv_signed <= resize(position_signed - prev_position, 5);
+    p_term <= resize(position_signed * kp_signed, 16);
+    d_term <= resize(deriv_signed * kd_signed, 16);
     
-    -- P-only calculation: correction = KP * position
-    correction_temp <= resize(position_signed * kp_signed, 14);
+    -- PD calculation: correction = KP * position + KD * derivative
+    correction_temp <= resize(p_term + d_term, 14);
     
     -- Register the output
     process(clk, reset_n)
@@ -57,8 +70,10 @@ begin
         if reset_n = '0' then
             correction_out <= to_signed(0, 14);
             fin_sl <= '0';
+            prev_position <= to_signed(0, 4);
         elsif rising_edge(clk) then
             if ready = '1' then
+                prev_position <= position_signed;
                 if start_sl = '1' then
                     if line_lost = '1' then
                         correction_out <= to_signed(0, 14);

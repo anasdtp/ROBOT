@@ -66,6 +66,7 @@ PORT (
 	sensor_data5_export : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
 	sensor_data6_export : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
 	kp_export : OUT STD_LOGIC_VECTOR(11 DOWNTO 0);
+	kd_export : OUT STD_LOGIC_VECTOR(11 DOWNTO 0);
 	start_sl_export : OUT STD_LOGIC;
 	fin_sl_export : IN STD_LOGIC;
 	start_rot_export : OUT STD_LOGIC;
@@ -127,7 +128,8 @@ PORT (
 	line_lost : IN STD_LOGIC;
 	correction : OUT STD_LOGIC_VECTOR(13 DOWNTO 0);
 	fin_sl : OUT STD_LOGIC;
-	kp_in : IN STD_LOGIC_VECTOR(11 DOWNTO 0) );
+	kp_in : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
+	kd_in : IN STD_LOGIC_VECTOR(11 DOWNTO 0) );
 END COMPONENT;
 
 COMPONENT ctl_rot
@@ -186,6 +188,7 @@ signal line_lost_sig : STD_LOGIC;
 -- Signals from ctl_sl (PID controller)
 signal correction_sig : STD_LOGIC_VECTOR(13 DOWNTO 0);
 signal kp_sig : STD_LOGIC_VECTOR(11 DOWNTO 0);
+signal kd_sig : STD_LOGIC_VECTOR(11 DOWNTO 0);
 signal start_sl_sig : STD_LOGIC;
 signal fin_sl_sig : STD_LOGIC;
 signal start_rot_sig : STD_LOGIC;
@@ -231,6 +234,7 @@ PORT MAP (
 	sensor_data5_export => data5_sig,
 	sensor_data6_export => data6_sig,
 	kp_export => kp_sig,
+	kd_export => kd_sig,
 	start_sl_export => start_sl_sig,
 	fin_sl_export => fin_sl_sig,
 	start_rot_export => start_rot_sig,
@@ -307,7 +311,8 @@ PORT MAP (
 	line_lost => line_lost_sig,
 	correction => correction_sig,
 	fin_sl => fin_sl_sig,
-	kp_in => kp_sig );
+	kp_in => kp_sig,
+	kd_in => kd_sig );
 
 -- Instantiate rotation controller
 Rotation_Controller: ctl_rot
