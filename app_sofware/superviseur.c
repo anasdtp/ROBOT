@@ -18,8 +18,8 @@
 
 #define KP 100
 #define KD 50
-#define BASE_SPEED_RUN 1856
-#define BASE_SPEED_ROT 1500
+#define BASE_SPEED_RUN 1950
+#define BASE_SPEED_ROT 2000
 
 typedef enum {
     STATE_INIT_WAIT = 0,
