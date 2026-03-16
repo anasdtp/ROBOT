@@ -9,7 +9,7 @@ USE ieee.numeric_std.all;
 
 ENTITY MUX IS
 GENERIC (
-	BASE_SPEED : integer := 1100  -- Vitesse de base des moteurs (à ajuster)
+	BASE_SPEED : integer := 1856  -- Vitesse de base des moteurs (à ajuster)
 );
 PORT (
 	clk : IN STD_LOGIC;
@@ -31,51 +31,45 @@ END MUX;
 
 ARCHITECTURE rtl OF MUX IS
 
+constant MAX_SPEED : integer := 4095; -- 12-bit PWM
 signal correction_signed : signed(13 downto 0);
-signal motor_right_signed : signed(13 downto 0);
-signal motor_left_signed : signed(13 downto 0);
-signal right_corrected : signed(13 downto 0);
-signal left_corrected : signed(13 downto 0);
 
 BEGIN
 
 correction_signed <= signed(correction_in);
-motor_right_signed <= signed(motor_right_in);
-motor_left_signed <= signed(motor_left_in);
 
--- Apply correction: 
--- right = BASE_SPEED + correction
--- left = BASE_SPEED - correction
+-- Apply correction around a forward base speed.
+-- If position > 0 (line on right), slow right and speed up left.
 process(clk, reset_n)
+    variable corr : integer;
+    variable right_speed : integer;
+    variable left_speed : integer;
 begin
-	if reset_n = '0' then
-		motor_right_out <= (others => '0');
-		motor_left_out <= (others => '0');
-	elsif rising_edge(clk) then
-		if ready = '1' then
-			-- Right motor: add correction
-			right_corrected <= motor_right_signed + correction_signed;
-			-- Left motor: subtract correction
-			left_corrected <= motor_left_signed - correction_signed;
-			
-			-- Output with saturation
-			if right_corrected > to_signed(8191, 14) then
-				motor_right_out <= std_logic_vector(to_signed(8191, 14));
-			elsif right_corrected < to_signed(-8192, 14) then
-				motor_right_out <= std_logic_vector(to_signed(-8192, 14));
-			else
-				motor_right_out <= std_logic_vector(right_corrected);
-			end if;
-			
-			if left_corrected > to_signed(8191, 14) then
-				motor_left_out <= std_logic_vector(to_signed(8191, 14));
-			elsif left_corrected < to_signed(-8192, 14) then
-				motor_left_out <= std_logic_vector(to_signed(-8192, 14));
-			else
-				motor_left_out <= std_logic_vector(left_corrected);
-			end if;
-		end if;
-	end if;
+    if reset_n = '0' then
+        motor_right_out <= (others => '0');
+        motor_left_out <= (others => '0');
+    elsif rising_edge(clk) then
+        if ready = '1' then
+            corr := to_integer(correction_signed);
+            right_speed := BASE_SPEED - corr;
+            left_speed := BASE_SPEED + corr;
+
+            if right_speed < 0 then
+                right_speed := 0;
+            elsif right_speed > MAX_SPEED then
+                right_speed := MAX_SPEED;
+            end if;
+
+            if left_speed < 0 then
+                left_speed := 0;
+            elsif left_speed > MAX_SPEED then
+                left_speed := MAX_SPEED;
+            end if;
+
+            motor_right_out <= '1' & '0' & std_logic_vector(to_unsigned(right_speed, 12));
+            motor_left_out  <= '1' & '0' & std_logic_vector(to_unsigned(left_speed, 12));
+        end if;
+    end if;
 end process;
 
 END rtl;

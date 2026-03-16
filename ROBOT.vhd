@@ -119,17 +119,17 @@ PORT (
 	correction : OUT STD_LOGIC_VECTOR(13 DOWNTO 0) );
 END COMPONENT;
 
--- COMPONENT MUX
--- PORT (
--- 	clk : IN STD_LOGIC;
--- 	reset_n : IN STD_LOGIC;
--- 	motor_right_in : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
--- 	motor_left_in : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
--- 	correction_in : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
--- 	ready : IN STD_LOGIC;
--- 	motor_right_out : OUT STD_LOGIC_VECTOR(13 DOWNTO 0);
--- 	motor_left_out : OUT STD_LOGIC_VECTOR(13 DOWNTO 0) );
--- END COMPONENT;
+COMPONENT MUX
+PORT (
+	clk : IN STD_LOGIC;
+	reset_n : IN STD_LOGIC;
+	motor_right_in : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
+	motor_left_in : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
+	correction_in : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
+	ready : IN STD_LOGIC;
+	motor_right_out : OUT STD_LOGIC_VECTOR(13 DOWNTO 0);
+	motor_left_out : OUT STD_LOGIC_VECTOR(13 DOWNTO 0) );
+END COMPONENT;
 
 -- Internal signals for motor control
 signal motor_right_data : STD_LOGIC_VECTOR(13 DOWNTO 0);
@@ -263,16 +263,16 @@ PORT MAP (
 	correction => correction_sig );
 
 -- Instantiate MUX module (apply PID to motor speeds)
--- Mux_Inst: MUX
--- PORT MAP (
--- 	clk => CLOCK_50,
--- 	reset_n => KEY(0),
--- 	motor_right_in => motor_right_data,
--- 	motor_left_in => motor_left_data,
--- 	correction_in => correction_sig,
--- 	ready => data_ready_sig,
--- 	motor_right_out => motor_right_corrected,
--- 	motor_left_out => motor_left_corrected );
+Mux_Inst: MUX
+PORT MAP (
+	clk => CLOCK_50,
+	reset_n => KEY(0),
+	motor_right_in => motor_right_data,
+	motor_left_in => motor_left_data,
+	correction_in => correction_sig,
+	ready => data_ready_sig,
+	motor_right_out => motor_right_corrected,
+	motor_left_out => motor_left_corrected );
 
 -- Instantiate PWM generation for motor control
 PWM_Motors: PWM_generation

@@ -31,7 +31,7 @@ end ctl_sl;
 
 architecture rtl of ctl_sl is
     
-    constant KP : integer := 900;
+    constant KP : integer := 500;
     
     signal position_signed : signed(3 downto 0);
     signal correction_temp : signed(13 downto 0);
@@ -43,8 +43,8 @@ begin
     position_signed <= signed(position_in);
     
     -- P-only calculation: correction = KP * position
-    -- Since KP = 900 and position is -3 to +3:
-    -- max output = 900 * 3 = 2700 (fits in 14-bit signed: -8192 to +8191)
+    -- Since KP = 500 and position is -3 to +3:
+    -- max output = 500 * 3 = 1500 (fits in 14-bit signed: -8192 to +8191)
     correction_temp <= resize(position_signed * KP, 14);
     
     -- Register the output

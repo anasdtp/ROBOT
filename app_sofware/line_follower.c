@@ -37,10 +37,10 @@
 #define DIR_BIT           0x1000    /* Bit 12 */
 #define SPEED_MASK        0x0FFF    /* Bits 11-0 */
 
-#define MIN_SPEED         0x3600    /* 1792 - Vitesse minimale */
-#define MAX_SPEED         0x39F0    /* 4080 - Vitesse maximale */
+#define MIN_SPEED         0x600    /* 1792 - Vitesse minimale */
+#define MAX_SPEED         0x9F0    /* 4080 - Vitesse maximale */
 
-#define BASE_SPEED        450    /* 2304 - Vitesse de base */
+#define BASE_SPEED        1856    /* 2304 - Vitesse de base */
 
 /* ===== PARAMETRES PID ===== */
 #define KP                900     /* Gain proportionnel */
@@ -168,9 +168,6 @@ void set_motors(int speed_right, int speed_left) {
         left_cmd |= DIR_BIT;
         speed_left = -speed_left;  /* Inversion pour correspondre à la logique du moteur */
     }
-
-    speed_right = map(speed_right, 0, 2000, MIN_SPEED, MAX_SPEED);
-    speed_left = map(speed_left, 0, 2000, MIN_SPEED, MAX_SPEED);
 
     /* Saturation */
     if(speed_right > MAX_SPEED) speed_right = MAX_SPEED;
