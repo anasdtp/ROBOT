@@ -65,7 +65,13 @@ PORT (
 	sensor_data4_export : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
 	sensor_data5_export : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
 	sensor_data6_export : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-	kp_export : OUT STD_LOGIC_VECTOR(11 DOWNTO 0) );
+	kp_export : OUT STD_LOGIC_VECTOR(11 DOWNTO 0);
+	start_sl_export : OUT STD_LOGIC;
+	fin_sl_export : IN STD_LOGIC;
+	start_rot_export : OUT STD_LOGIC;
+	dir_rot_export : OUT STD_LOGIC;
+	fin_rot_export : IN STD_LOGIC;
+	base_speed_export : OUT STD_LOGIC_VECTOR(11 DOWNTO 0) );
 END COMPONENT;
 
 COMPONENT capteurs_sol
@@ -117,8 +123,23 @@ PORT (
 	reset_n : IN STD_LOGIC;
 	position_in : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
 	ready : IN STD_LOGIC;
+	start_sl : IN STD_LOGIC;
+	line_lost : IN STD_LOGIC;
 	correction : OUT STD_LOGIC_VECTOR(13 DOWNTO 0);
+	fin_sl : OUT STD_LOGIC;
 	kp_in : IN STD_LOGIC_VECTOR(11 DOWNTO 0) );
+END COMPONENT;
+
+COMPONENT ctl_rot
+PORT (
+	clk : IN STD_LOGIC;
+	reset_n : IN STD_LOGIC;
+	start_rot : IN STD_LOGIC;
+	dir_rot : IN STD_LOGIC;
+	position_in : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+	line_lost : IN STD_LOGIC;
+	ready : IN STD_LOGIC;
+	fin_rot : OUT STD_LOGIC );
 END COMPONENT;
 
 COMPONENT MUX
@@ -128,6 +149,12 @@ PORT (
 	motor_right_in : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
 	motor_left_in : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
 	correction_in : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
+	base_speed_in : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
+	start_sl : IN STD_LOGIC;
+	fin_sl : IN STD_LOGIC;
+	start_rot : IN STD_LOGIC;
+	dir_rot : IN STD_LOGIC;
+	fin_rot : IN STD_LOGIC;
 	ready : IN STD_LOGIC;
 	motor_right_out : OUT STD_LOGIC_VECTOR(13 DOWNTO 0);
 	motor_left_out : OUT STD_LOGIC_VECTOR(13 DOWNTO 0) );
@@ -159,6 +186,12 @@ signal line_lost_sig : STD_LOGIC;
 -- Signals from ctl_sl (PID controller)
 signal correction_sig : STD_LOGIC_VECTOR(13 DOWNTO 0);
 signal kp_sig : STD_LOGIC_VECTOR(11 DOWNTO 0);
+signal start_sl_sig : STD_LOGIC;
+signal fin_sl_sig : STD_LOGIC;
+signal start_rot_sig : STD_LOGIC;
+signal dir_rot_sig : STD_LOGIC;
+signal fin_rot_sig : STD_LOGIC;
+signal base_speed_sig : STD_LOGIC_VECTOR(11 DOWNTO 0);
 
 -- Clock divider for 2 KHz data_capture signal
 -- 50 MHz / 2 KHz = 25000
@@ -197,7 +230,13 @@ PORT MAP (
 	sensor_data4_export => data4_sig,
 	sensor_data5_export => data5_sig,
 	sensor_data6_export => data6_sig,
-	kp_export => kp_sig );
+	kp_export => kp_sig,
+	start_sl_export => start_sl_sig,
+	fin_sl_export => fin_sl_sig,
+	start_rot_export => start_rot_sig,
+	dir_rot_export => dir_rot_sig,
+	fin_rot_export => fin_rot_sig,
+	base_speed_export => base_speed_sig );
 
 -- Extract control and status signals
 sensor_status_sig <= "0000000" & data_ready_sig;
@@ -264,8 +303,23 @@ PORT MAP (
 	reset_n => KEY(0),
 	position_in => position_sig,
 	ready => data_ready_sig,
+	start_sl => start_sl_sig,
+	line_lost => line_lost_sig,
 	correction => correction_sig,
+	fin_sl => fin_sl_sig,
 	kp_in => kp_sig );
+
+-- Instantiate rotation controller
+Rotation_Controller: ctl_rot
+PORT MAP (
+	clk => CLOCK_50,
+	reset_n => KEY(0),
+	start_rot => start_rot_sig,
+	dir_rot => dir_rot_sig,
+	position_in => position_sig,
+	line_lost => line_lost_sig,
+	ready => data_ready_sig,
+	fin_rot => fin_rot_sig );
 
 -- Instantiate MUX module (apply PID to motor speeds)
 Mux_Inst: MUX
@@ -275,6 +329,12 @@ PORT MAP (
 	motor_right_in => motor_right_data,
 	motor_left_in => motor_left_data,
 	correction_in => correction_sig,
+	base_speed_in => base_speed_sig,
+	start_sl => start_sl_sig,
+	fin_sl => fin_sl_sig,
+	start_rot => start_rot_sig,
+	dir_rot => dir_rot_sig,
+	fin_rot => fin_rot_sig,
 	ready => data_ready_sig,
 	motor_right_out => motor_right_corrected,
 	motor_left_out => motor_left_corrected );
@@ -312,29 +372,35 @@ IR_LED_ON <= '1'; -- Enable IR LEDs for line sensors
 -- LED(6) <= '1' when unsigned(data6_sig) > THRESHOLD else '0';  -- LED6 = capteur6
 -- LED(7) <= line_lost_sig;                                      -- LED7 = line_lost flag
 
-process(position_sig)
-    variable pos : signed(3 downto 0);
+process(position_sig, start_sl_sig, fin_sl_sig)
+	variable pos : signed(3 downto 0);
+	variable led_next : std_logic_vector(7 downto 0);
 begin
-    pos := signed(position_sig);
-    
-    case pos is
-        when to_signed(-3, 4) =>
-            LED <= "00000001";  -- LED0 - Extrême gauche
-        when to_signed(-2, 4) =>
-            LED <= "00000010";  -- LED1 - Gauche
-        when to_signed(-1, 4) =>
-            LED <= "00000100";  -- LED2 - Légèrement gauche
-        when to_signed(0, 4) =>
-            LED <= "00001000";  -- LED3 - Centre
-        when to_signed(1, 4) =>
-            LED <= "00010000";  -- LED4 - Légèrement droite
-        when to_signed(2, 4) =>
-            LED <= "00100000";  -- LED5 - Droite
-        when to_signed(3, 4) =>
-            LED <= "01000000";  -- LED7 - Extrême droite
-        when others =>
-            LED <= "00000000";  -- Aucune LED
-    end case;
+	pos := signed(position_sig);
+	led_next := (others => '0');
+
+	case pos is
+		when to_signed(-3, 4) =>
+			led_next := "00000001";  -- LED0 - Extrême gauche
+		when to_signed(-2, 4) =>
+			led_next := "00000010";  -- LED1 - Gauche
+		when to_signed(-1, 4) =>
+			led_next := "00000100";  -- LED2 - Légèrement gauche
+		when to_signed(0, 4) =>
+			led_next := "00001000";  -- LED3 - Centre
+		when to_signed(1, 4) =>
+			led_next := "00010000";  -- LED4 - Légèrement droite
+		when to_signed(2, 4) =>
+			led_next := "00100000";  -- LED5 - Droite
+		when to_signed(3, 4) =>
+			led_next := "01000000";  -- LED6 - Extrême droite
+		when others =>
+			led_next := "00000000";  -- Aucune LED
+	end case;
+
+	led_next(7) := start_sl_sig; -- Start SL
+	led_next(6) := fin_sl_sig;   -- Fin SL
+	LED <= led_next;
 end process;
 
 END Structure;

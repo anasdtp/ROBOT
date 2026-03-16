@@ -21,11 +21,14 @@ entity ctl_sl is
         -- Input from position_ligne module
         position_in : in  std_logic_vector(3 downto 0);  -- Signed -3 to +3
         ready       : in  std_logic;                     -- Data valid flag
+        start_sl    : in  std_logic;
+        line_lost   : in  std_logic;
         
         -- Output correction for motors
         -- Positive = turn right (reduce left motor speed / increase right motor speed)
         -- Negative = turn left  (reduce right motor speed / increase left motor speed)
         correction  : out std_logic_vector(13 downto 0); -- Signed correction value
+        fin_sl      : out std_logic;
 
         -- KP from Nios (12-bit signed)
         kp_in       : in  std_logic_vector(11 downto 0)
@@ -53,9 +56,21 @@ begin
     begin
         if reset_n = '0' then
             correction_out <= to_signed(0, 14);
+            fin_sl <= '0';
         elsif rising_edge(clk) then
             if ready = '1' then
-                correction_out <= correction_temp;
+                if start_sl = '1' then
+                    if line_lost = '1' then
+                        correction_out <= to_signed(0, 14);
+                        fin_sl <= '1';
+                    else
+                        correction_out <= correction_temp;
+                        fin_sl <= '0';
+                    end if;
+                else
+                    correction_out <= to_signed(0, 14);
+                    fin_sl <= '0';
+                end if;
             end if;
         end if;
     end process;

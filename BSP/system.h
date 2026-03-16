@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_qsys_0' in SOPC Builder design 'nios_system_sdram'
  * SOPC Builder design path: C:/Users/mdaggag/Documents/Quartus/ROBOT/nios_system_sdram.sopcinfo
  *
- * Generated: Mon Mar 16 11:12:04 CET 2026
+ * Generated: Mon Mar 16 11:56:19 CET 2026
  */
 
 /*
@@ -191,6 +191,114 @@
 #define ALT_STDOUT_PRESENT
 #define ALT_STDOUT_TYPE "altera_avalon_jtag_uart"
 #define ALT_SYSTEM_NAME "nios_system_sdram"
+
+
+/*
+ * base_speed configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_base_speed altera_avalon_pio
+#define BASE_SPEED_BASE 0x10c0
+#define BASE_SPEED_BIT_CLEARING_EDGE_REGISTER 0
+#define BASE_SPEED_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define BASE_SPEED_CAPTURE 0
+#define BASE_SPEED_DATA_WIDTH 12
+#define BASE_SPEED_DO_TEST_BENCH_WIRING 0
+#define BASE_SPEED_DRIVEN_SIM_VALUE 0
+#define BASE_SPEED_EDGE_TYPE "NONE"
+#define BASE_SPEED_FREQ 50000000
+#define BASE_SPEED_HAS_IN 0
+#define BASE_SPEED_HAS_OUT 1
+#define BASE_SPEED_HAS_TRI 0
+#define BASE_SPEED_IRQ -1
+#define BASE_SPEED_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define BASE_SPEED_IRQ_TYPE "NONE"
+#define BASE_SPEED_NAME "/dev/base_speed"
+#define BASE_SPEED_RESET_VALUE 1856
+#define BASE_SPEED_SPAN 16
+#define BASE_SPEED_TYPE "altera_avalon_pio"
+
+
+/*
+ * dir_rot configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_dir_rot altera_avalon_pio
+#define DIR_ROT_BASE 0x10e0
+#define DIR_ROT_BIT_CLEARING_EDGE_REGISTER 0
+#define DIR_ROT_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define DIR_ROT_CAPTURE 0
+#define DIR_ROT_DATA_WIDTH 1
+#define DIR_ROT_DO_TEST_BENCH_WIRING 0
+#define DIR_ROT_DRIVEN_SIM_VALUE 0
+#define DIR_ROT_EDGE_TYPE "NONE"
+#define DIR_ROT_FREQ 50000000
+#define DIR_ROT_HAS_IN 0
+#define DIR_ROT_HAS_OUT 1
+#define DIR_ROT_HAS_TRI 0
+#define DIR_ROT_IRQ -1
+#define DIR_ROT_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define DIR_ROT_IRQ_TYPE "NONE"
+#define DIR_ROT_NAME "/dev/dir_rot"
+#define DIR_ROT_RESET_VALUE 0
+#define DIR_ROT_SPAN 16
+#define DIR_ROT_TYPE "altera_avalon_pio"
+
+
+/*
+ * fin_rot configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_fin_rot altera_avalon_pio
+#define FIN_ROT_BASE 0x10d0
+#define FIN_ROT_BIT_CLEARING_EDGE_REGISTER 0
+#define FIN_ROT_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define FIN_ROT_CAPTURE 0
+#define FIN_ROT_DATA_WIDTH 1
+#define FIN_ROT_DO_TEST_BENCH_WIRING 0
+#define FIN_ROT_DRIVEN_SIM_VALUE 0
+#define FIN_ROT_EDGE_TYPE "NONE"
+#define FIN_ROT_FREQ 50000000
+#define FIN_ROT_HAS_IN 1
+#define FIN_ROT_HAS_OUT 0
+#define FIN_ROT_HAS_TRI 0
+#define FIN_ROT_IRQ -1
+#define FIN_ROT_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define FIN_ROT_IRQ_TYPE "NONE"
+#define FIN_ROT_NAME "/dev/fin_rot"
+#define FIN_ROT_RESET_VALUE 0
+#define FIN_ROT_SPAN 16
+#define FIN_ROT_TYPE "altera_avalon_pio"
+
+
+/*
+ * fin_sl configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_fin_sl altera_avalon_pio
+#define FIN_SL_BASE 0x1100
+#define FIN_SL_BIT_CLEARING_EDGE_REGISTER 0
+#define FIN_SL_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define FIN_SL_CAPTURE 0
+#define FIN_SL_DATA_WIDTH 1
+#define FIN_SL_DO_TEST_BENCH_WIRING 0
+#define FIN_SL_DRIVEN_SIM_VALUE 0
+#define FIN_SL_EDGE_TYPE "NONE"
+#define FIN_SL_FREQ 50000000
+#define FIN_SL_HAS_IN 1
+#define FIN_SL_HAS_OUT 0
+#define FIN_SL_HAS_TRI 0
+#define FIN_SL_IRQ -1
+#define FIN_SL_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define FIN_SL_IRQ_TYPE "NONE"
+#define FIN_SL_NAME "/dev/fin_sl"
+#define FIN_SL_RESET_VALUE 0
+#define FIN_SL_SPAN 16
+#define FIN_SL_TYPE "altera_avalon_pio"
 
 
 /*
@@ -611,6 +719,60 @@
 #define SENSOR_STATUS_RESET_VALUE 0
 #define SENSOR_STATUS_SPAN 16
 #define SENSOR_STATUS_TYPE "altera_avalon_pio"
+
+
+/*
+ * start_rot configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_start_rot altera_avalon_pio
+#define START_ROT_BASE 0x10f0
+#define START_ROT_BIT_CLEARING_EDGE_REGISTER 0
+#define START_ROT_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define START_ROT_CAPTURE 0
+#define START_ROT_DATA_WIDTH 1
+#define START_ROT_DO_TEST_BENCH_WIRING 0
+#define START_ROT_DRIVEN_SIM_VALUE 0
+#define START_ROT_EDGE_TYPE "NONE"
+#define START_ROT_FREQ 50000000
+#define START_ROT_HAS_IN 0
+#define START_ROT_HAS_OUT 1
+#define START_ROT_HAS_TRI 0
+#define START_ROT_IRQ -1
+#define START_ROT_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define START_ROT_IRQ_TYPE "NONE"
+#define START_ROT_NAME "/dev/start_rot"
+#define START_ROT_RESET_VALUE 0
+#define START_ROT_SPAN 16
+#define START_ROT_TYPE "altera_avalon_pio"
+
+
+/*
+ * start_sl configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_start_sl altera_avalon_pio
+#define START_SL_BASE 0x1110
+#define START_SL_BIT_CLEARING_EDGE_REGISTER 0
+#define START_SL_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define START_SL_CAPTURE 0
+#define START_SL_DATA_WIDTH 1
+#define START_SL_DO_TEST_BENCH_WIRING 0
+#define START_SL_DRIVEN_SIM_VALUE 0
+#define START_SL_EDGE_TYPE "NONE"
+#define START_SL_FREQ 50000000
+#define START_SL_HAS_IN 0
+#define START_SL_HAS_OUT 1
+#define START_SL_HAS_TRI 0
+#define START_SL_IRQ -1
+#define START_SL_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define START_SL_IRQ_TYPE "NONE"
+#define START_SL_NAME "/dev/start_sl"
+#define START_SL_RESET_VALUE 0
+#define START_SL_SPAN 16
+#define START_SL_TYPE "altera_avalon_pio"
 
 
 /*

@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>16 mars 2026 11:12:03</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1773655923087</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>16 mars 2026 11:56:18</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1773658578007</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\mdaggag\Documents\Quartus\ROBOT\BSP</BspGeneratedLocation>
         <BspSettingsFile>C:\Users\mdaggag\Documents\Quartus\ROBOT\BSP\settings.bsp</BspSettingsFile>
         <SopcDesignFile>C:\Users\mdaggag\Documents\Quartus\ROBOT\nios_system_sdram.sopcinfo</SopcDesignFile>
@@ -937,6 +937,42 @@
         <MemoryMap>
                 <slaveDescriptor>kp</slaveDescriptor>
                 <addressRange>0x000010B0 - 0x000010BF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>base_speed</slaveDescriptor>
+                <addressRange>0x000010C0 - 0x000010CF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>fin_rot</slaveDescriptor>
+                <addressRange>0x000010D0 - 0x000010DF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>dir_rot</slaveDescriptor>
+                <addressRange>0x000010E0 - 0x000010EF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>start_rot</slaveDescriptor>
+                <addressRange>0x000010F0 - 0x000010FF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>fin_sl</slaveDescriptor>
+                <addressRange>0x00001100 - 0x0000110F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>start_sl</slaveDescriptor>
+                <addressRange>0x00001110 - 0x0000111F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>

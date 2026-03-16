@@ -47,12 +47,12 @@ module nios_system_sdram_addr_router_default_decode
      parameter DEFAULT_CHANNEL = 2,
                DEFAULT_WR_CHANNEL = -1,
                DEFAULT_RD_CHANNEL = -1,
-               DEFAULT_DESTID = 7 
+               DEFAULT_DESTID = 11 
    )
   (output [93 - 89 : 0] default_destination_id,
-   output [18-1 : 0] default_wr_channel,
-   output [18-1 : 0] default_rd_channel,
-   output [18-1 : 0] default_src_channel
+   output [24-1 : 0] default_wr_channel,
+   output [24-1 : 0] default_rd_channel,
+   output [24-1 : 0] default_src_channel
   );
 
   assign default_destination_id = 
@@ -63,7 +63,7 @@ module nios_system_sdram_addr_router_default_decode
       assign default_src_channel = '0;
     end
     else begin
-      assign default_src_channel = 18'b1 << DEFAULT_CHANNEL;
+      assign default_src_channel = 24'b1 << DEFAULT_CHANNEL;
     end
   end
   endgenerate
@@ -74,8 +74,8 @@ module nios_system_sdram_addr_router_default_decode
       assign default_rd_channel = '0;
     end
     else begin
-      assign default_wr_channel = 18'b1 << DEFAULT_WR_CHANNEL;
-      assign default_rd_channel = 18'b1 << DEFAULT_RD_CHANNEL;
+      assign default_wr_channel = 24'b1 << DEFAULT_WR_CHANNEL;
+      assign default_rd_channel = 24'b1 << DEFAULT_RD_CHANNEL;
     end
   end
   endgenerate
@@ -105,7 +105,7 @@ module nios_system_sdram_addr_router
     // -------------------
     output                          src_valid,
     output reg [104-1    : 0] src_data,
-    output reg [18-1 : 0] src_channel,
+    output reg [24-1 : 0] src_channel,
     output                          src_startofpacket,
     output                          src_endofpacket,
     input                           src_ready
@@ -121,7 +121,7 @@ module nios_system_sdram_addr_router
     localparam PKT_PROTECTION_H = 97;
     localparam PKT_PROTECTION_L = 95;
     localparam ST_DATA_W = 104;
-    localparam ST_CHANNEL_W = 18;
+    localparam ST_CHANNEL_W = 24;
     localparam DECODER_TYPE = 0;
 
     localparam PKT_TRANS_WRITE = 65;
@@ -164,7 +164,7 @@ module nios_system_sdram_addr_router
     assign src_endofpacket   = sink_endofpacket;
 
     wire [PKT_DEST_ID_W-1:0] default_destid;
-    wire [18-1 : 0] default_src_channel;
+    wire [24-1 : 0] default_src_channel;
 
 
 
@@ -189,20 +189,20 @@ module nios_system_sdram_addr_router
 
     // ( 0x0 .. 0x1000 )
     if ( {address[RG:PAD0],{PAD0{1'b0}}} == 27'h0   ) begin
-            src_channel = 18'b010;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 6;
+            src_channel = 24'b010;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 10;
     end
 
     // ( 0x1800 .. 0x2000 )
     if ( {address[RG:PAD1],{PAD1{1'b0}}} == 27'h1800   ) begin
-            src_channel = 18'b001;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 5;
+            src_channel = 24'b001;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 9;
     end
 
     // ( 0x4000000 .. 0x6000000 )
     if ( {address[RG:PAD2],{PAD2{1'b0}}} == 27'h4000000   ) begin
-            src_channel = 18'b100;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 7;
+            src_channel = 24'b100;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 11;
     end
 
 end

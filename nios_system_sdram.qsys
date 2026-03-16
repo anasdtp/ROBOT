@@ -33,6 +33,19 @@
          type = "String";
       }
    }
+   element base_speed
+   {
+      datum _sortIndex
+      {
+         value = "20";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
    element clk_0
    {
       datum _sortIndex
@@ -46,6 +59,30 @@
       datum _sortIndex
       {
          value = "1";
+         type = "int";
+      }
+   }
+   element dir_rot
+   {
+      datum _sortIndex
+      {
+         value = "24";
+         type = "int";
+      }
+   }
+   element fin_rot
+   {
+      datum _sortIndex
+      {
+         value = "25";
+         type = "int";
+      }
+   }
+   element fin_sl
+   {
+      datum _sortIndex
+      {
+         value = "22";
          type = "int";
       }
    }
@@ -110,6 +147,19 @@
          type = "int";
       }
    }
+   element start_sl.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "4368";
+         type = "String";
+      }
+   }
    element sensor_status.s1
    {
       datum _lockedAddress
@@ -159,6 +209,19 @@
       datum baseAddress
       {
          value = "4192";
+         type = "String";
+      }
+   }
+   element base_speed.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "4288";
          type = "String";
       }
    }
@@ -214,6 +277,19 @@
          type = "String";
       }
    }
+   element dir_rot.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "4320";
+         type = "String";
+      }
+   }
    element sensor_data3.s1
    {
       datum _lockedAddress
@@ -240,6 +316,19 @@
          type = "String";
       }
    }
+   element fin_rot.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "4304";
+         type = "String";
+      }
+   }
    element sensor_data1.s1
    {
       datum _lockedAddress
@@ -250,6 +339,19 @@
       datum baseAddress
       {
          value = "4176";
+         type = "String";
+      }
+   }
+   element fin_sl.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "4352";
          type = "String";
       }
    }
@@ -302,6 +404,19 @@
       datum baseAddress
       {
          value = "4240";
+         type = "String";
+      }
+   }
+   element start_rot.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "4336";
          type = "String";
       }
    }
@@ -395,6 +510,22 @@
       datum _sortIndex
       {
          value = "11";
+         type = "int";
+      }
+   }
+   element start_rot
+   {
+      datum _sortIndex
+      {
+         value = "23";
+         type = "int";
+      }
+   }
+   element start_sl
+   {
+      datum _sortIndex
+      {
+         value = "21";
          type = "int";
       }
    }
@@ -494,6 +625,36 @@
    type="conduit"
    dir="end" />
  <interface name="kp" internal="kp.external_connection" type="conduit" dir="end" />
+ <interface
+   name="start_sl"
+   internal="start_sl.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="fin_sl"
+   internal="fin_sl.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="start_rot"
+   internal="start_rot.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="dir_rot"
+   internal="dir_rot.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="fin_rot"
+   internal="fin_rot.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="base_speed"
+   internal="base_speed.external_connection"
+   type="conduit"
+   dir="end" />
  <module kind="clock_source" version="13.0" enabled="1" name="clk_0">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
@@ -606,7 +767,7 @@
   <parameter name="tightlyCoupledInstructionMaster2AddrWidth" value="1" />
   <parameter name="tightlyCoupledInstructionMaster3AddrWidth" value="1" />
   <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='sdram.s1' start='0x4000000' end='0x6000000' /></address-map>]]></parameter>
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' /><slave name='motor_left.s1' start='0x1000' end='0x1010' /><slave name='motor_right.s1' start='0x1010' end='0x1020' /><slave name='sensor_control.s1' start='0x1020' end='0x1030' /><slave name='sensor_status.s1' start='0x1030' end='0x1040' /><slave name='sensor_data0.s1' start='0x1040' end='0x1050' /><slave name='sensor_data1.s1' start='0x1050' end='0x1060' /><slave name='sensor_data2.s1' start='0x1060' end='0x1070' /><slave name='sensor_data3.s1' start='0x1070' end='0x1080' /><slave name='sensor_data4.s1' start='0x1080' end='0x1090' /><slave name='sensor_data5.s1' start='0x1090' end='0x10A0' /><slave name='sensor_data6.s1' start='0x10A0' end='0x10B0' /><slave name='kp.s1' start='0x10B0' end='0x10C0' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='switches.s1' start='0x2000' end='0x2010' /><slave name='LEDs.s1' start='0x2010' end='0x2020' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x2020' end='0x2028' /><slave name='sdram.s1' start='0x4000000' end='0x6000000' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' /><slave name='motor_left.s1' start='0x1000' end='0x1010' /><slave name='motor_right.s1' start='0x1010' end='0x1020' /><slave name='sensor_control.s1' start='0x1020' end='0x1030' /><slave name='sensor_status.s1' start='0x1030' end='0x1040' /><slave name='sensor_data0.s1' start='0x1040' end='0x1050' /><slave name='sensor_data1.s1' start='0x1050' end='0x1060' /><slave name='sensor_data2.s1' start='0x1060' end='0x1070' /><slave name='sensor_data3.s1' start='0x1070' end='0x1080' /><slave name='sensor_data4.s1' start='0x1080' end='0x1090' /><slave name='sensor_data5.s1' start='0x1090' end='0x10A0' /><slave name='sensor_data6.s1' start='0x10A0' end='0x10B0' /><slave name='kp.s1' start='0x10B0' end='0x10C0' /><slave name='base_speed.s1' start='0x10C0' end='0x10D0' /><slave name='fin_rot.s1' start='0x10D0' end='0x10E0' /><slave name='dir_rot.s1' start='0x10E0' end='0x10F0' /><slave name='start_rot.s1' start='0x10F0' end='0x1100' /><slave name='fin_sl.s1' start='0x1100' end='0x1110' /><slave name='start_sl.s1' start='0x1110' end='0x1120' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='switches.s1' start='0x2000' end='0x2010' /><slave name='LEDs.s1' start='0x2010' end='0x2020' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x2020' end='0x2028' /><slave name='sdram.s1' start='0x4000000' end='0x6000000' /></address-map>]]></parameter>
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="deviceFamilyName" value="Cyclone IV E" />
   <parameter name="internalIrqMaskSystemInfo" value="32" />
@@ -947,6 +1108,114 @@
   <parameter name="generateIRQ" value="false" />
   <parameter name="irqType" value="LEVEL" />
   <parameter name="resetValue" value="1000" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="12" />
+  <parameter name="clockRate" value="50000000" />
+ </module>
+ <module
+   kind="altera_avalon_pio"
+   version="13.0.1.99.2"
+   enabled="1"
+   name="start_sl">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+  <parameter name="clockRate" value="50000000" />
+ </module>
+ <module
+   kind="altera_avalon_pio"
+   version="13.0.1.99.2"
+   enabled="1"
+   name="fin_sl">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+  <parameter name="clockRate" value="50000000" />
+ </module>
+ <module
+   kind="altera_avalon_pio"
+   version="13.0.1.99.2"
+   enabled="1"
+   name="start_rot">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+  <parameter name="clockRate" value="50000000" />
+ </module>
+ <module
+   kind="altera_avalon_pio"
+   version="13.0.1.99.2"
+   enabled="1"
+   name="dir_rot">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+  <parameter name="clockRate" value="50000000" />
+ </module>
+ <module
+   kind="altera_avalon_pio"
+   version="13.0.1.99.2"
+   enabled="1"
+   name="fin_rot">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+  <parameter name="clockRate" value="50000000" />
+ </module>
+ <module
+   kind="altera_avalon_pio"
+   version="13.0.1.99.2"
+   enabled="1"
+   name="base_speed">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="1856" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="12" />
@@ -1405,6 +1674,134 @@
    version="13.0"
    start="nios2_qsys_0.jtag_debug_module_reset"
    end="kp.reset" />
+ <connection
+   kind="reset"
+   version="13.0"
+   start="clk_0.clk_reset"
+   end="start_sl.reset" />
+ <connection kind="clock" version="13.0" start="clocks.sys_clk" end="start_sl.clk" />
+ <connection
+   kind="avalon"
+   version="13.0"
+   start="nios2_qsys_0.data_master"
+   end="start_sl.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x1110" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="reset"
+   version="13.0"
+   start="nios2_qsys_0.jtag_debug_module_reset"
+   end="start_sl.reset" />
+ <connection
+   kind="reset"
+   version="13.0"
+   start="clk_0.clk_reset"
+   end="fin_sl.reset" />
+ <connection
+   kind="reset"
+   version="13.0"
+   start="clk_0.clk_reset"
+   end="start_rot.reset" />
+ <connection
+   kind="reset"
+   version="13.0"
+   start="clk_0.clk_reset"
+   end="dir_rot.reset" />
+ <connection
+   kind="reset"
+   version="13.0"
+   start="clk_0.clk_reset"
+   end="fin_rot.reset" />
+ <connection
+   kind="reset"
+   version="13.0"
+   start="clk_0.clk_reset"
+   end="base_speed.reset" />
+ <connection
+   kind="clock"
+   version="13.0"
+   start="clocks.sys_clk"
+   end="base_speed.clk" />
+ <connection kind="clock" version="13.0" start="clocks.sys_clk" end="fin_rot.clk" />
+ <connection kind="clock" version="13.0" start="clocks.sys_clk" end="fin_sl.clk" />
+ <connection
+   kind="clock"
+   version="13.0"
+   start="clocks.sys_clk"
+   end="start_rot.clk" />
+ <connection kind="clock" version="13.0" start="clocks.sys_clk" end="dir_rot.clk" />
+ <connection
+   kind="avalon"
+   version="13.0"
+   start="nios2_qsys_0.data_master"
+   end="fin_sl.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x1100" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="13.0"
+   start="nios2_qsys_0.data_master"
+   end="start_rot.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x10f0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="13.0"
+   start="nios2_qsys_0.data_master"
+   end="dir_rot.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x10e0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="13.0"
+   start="nios2_qsys_0.data_master"
+   end="fin_rot.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x10d0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="13.0"
+   start="nios2_qsys_0.data_master"
+   end="base_speed.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x10c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="reset"
+   version="13.0"
+   start="nios2_qsys_0.jtag_debug_module_reset"
+   end="fin_sl.reset" />
+ <connection
+   kind="reset"
+   version="13.0"
+   start="nios2_qsys_0.jtag_debug_module_reset"
+   end="start_rot.reset" />
+ <connection
+   kind="reset"
+   version="13.0"
+   start="nios2_qsys_0.jtag_debug_module_reset"
+   end="dir_rot.reset" />
+ <connection
+   kind="reset"
+   version="13.0"
+   start="nios2_qsys_0.jtag_debug_module_reset"
+   end="fin_rot.reset" />
+ <connection
+   kind="reset"
+   version="13.0"
+   start="nios2_qsys_0.jtag_debug_module_reset"
+   end="base_speed.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
 </system>
